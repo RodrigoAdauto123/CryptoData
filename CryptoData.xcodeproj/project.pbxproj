@@ -13,6 +13,7 @@
 		89626895285BE627003DDAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89626893285BE627003DDAA9 /* Main.storyboard */; };
 		89626897285BE628003DDAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89626896285BE628003DDAA9 /* Assets.xcassets */; };
 		8962689A285BE628003DDAA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89626898285BE628003DDAA9 /* LaunchScreen.storyboard */; };
+		89E46D98286622AA007199FD /* ListaCryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E46D97286622AA007199FD /* ListaCryptoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		89626896285BE628003DDAA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89626899285BE628003DDAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8962689B285BE628003DDAA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89E46D97286622AA007199FD /* ListaCryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaCryptoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				89626896285BE628003DDAA9 /* Assets.xcassets */,
 				89626898285BE628003DDAA9 /* LaunchScreen.storyboard */,
 				8962689B285BE628003DDAA9 /* Info.plist */,
+				89E46D97286622AA007199FD /* ListaCryptoViewController.swift */,
 			);
 			path = CryptoData;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				89626892285BE627003DDAA9 /* ViewController.swift in Sources */,
 				8962688E285BE627003DDAA9 /* AppDelegate.swift in Sources */,
 				89626890285BE627003DDAA9 /* SceneDelegate.swift in Sources */,
+				89E46D98286622AA007199FD /* ListaCryptoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
