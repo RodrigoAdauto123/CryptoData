@@ -10,15 +10,20 @@ import UIKit
 class ListaCryptoViewController: UIViewController {
 
     @IBOutlet weak var listaCrypto: UITableView!
+    var cryptoList: [Crypto]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         listaCrypto.dataSource = self
-        listaCrypto.delegate = self
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        requestModel()
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -32,23 +37,36 @@ class ListaCryptoViewController: UIViewController {
 }
 
 extension ListaCryptoViewController: UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        guard let cryptos = cryptoList else{
+            return 0
+        }
+        return cryptos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListaTableViewCell else {
+            fatalError("Sin servicio")
+        }
+        
+        let crypto = cryptoList![indexPath.row]
+        cell.simboloCrypto.text = crypto.symbol.uppercased()
+        
+        
+        
+        cell.precioCrypto.text = crypto.currentPrice.conversionPrecio()
+        
+        let porcentajeString :String = String (format: "%.3f", crypto.priceChange24h)
+        cell.porcentajeCrypto.text = porcentajeString + "%"
+        if(porcentajeString.contains("-")){
+            cell.porcentajeCrypto.textColor = UIColor.red     }
+        
+       
         return cell
     }
     
-    
-}
-
-extension ListaCryptoViewController: UITableViewDelegate{
     
 }
