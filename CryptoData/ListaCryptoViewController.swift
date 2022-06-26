@@ -9,12 +9,19 @@ import UIKit
 
 class ListaCryptoViewController: UIViewController {
 
+    @IBOutlet weak var filtroListaCrypto: UITextField!
     @IBOutlet weak var listaCrypto: UITableView!
     var cryptoList: [Crypto]?
+    var backupCryptoList: [Crypto] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         listaCrypto.dataSource = self
+//        listaCrypto.register(ListaTableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        
+        filtroListaCrypto.addTarget(self, action: #selector(filtroLista(_:)), for: .editingChanged)
         
     }
     
@@ -22,24 +29,29 @@ class ListaCryptoViewController: UIViewController {
         requestModel()
     }
     
-    
-    
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension ListaCryptoViewController{
+    
+    @objc func filtroLista(_ filtro: UITextField){
+        
+        var listafiltrada: [Crypto] = []
+        let texto = filtro.text ?? ""
+        for crypto in backupCryptoList{
+            if (crypto.name.lowercased().contains(texto.lowercased())){
+                listafiltrada.append(crypto)
+            }
+        }
+        cryptoList = (texto.count > 0) ? listafiltrada : backupCryptoList
+        listaCrypto.reloadData()
     }
-    */
-
 }
 
 extension ListaCryptoViewController: UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         guard let cryptos = cryptoList else{
             return 0
         }
@@ -53,7 +65,7 @@ extension ListaCryptoViewController: UITableViewDataSource{
         }
         
         let crypto = cryptoList![indexPath.row]
-        cell.simboloCrypto.text = crypto.symbol.uppercased()
+        cell.simboloCrypto.text =  crypto.name + " (" + crypto.symbol.uppercased() + ")"
         
         
         

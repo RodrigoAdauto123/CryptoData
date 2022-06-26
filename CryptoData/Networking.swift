@@ -13,13 +13,14 @@ extension ListaCryptoViewController{
     
     
     
-     func requestModel(){
+    func requestModel(){
         AF.request("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h").responseDecodable(of: [Crypto].self) { response in
             
             switch response.result{
             case .success(let cryptos):
                 self.cryptoList = cryptos
                 self.listaCrypto.reloadData()
+                self.backupCryptoList = cryptos
             case .failure(let error):
                 print(error.localizedDescription)
             }
