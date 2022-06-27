@@ -9,6 +9,9 @@ target 'CryptoData' do
 
   # Pods for CryptoData
   pod 'Alamofire', '5.6.1'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'FirebaseAnalytics'
 
 
 end
