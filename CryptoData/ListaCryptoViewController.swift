@@ -18,7 +18,6 @@ class ListaCryptoViewController: UIViewController {
         super.viewDidLoad()
         
         listaCrypto.dataSource = self
-//        listaCrypto.register(ListaTableViewCell.self, forCellReuseIdentifier: "cell")
         
         
         filtroListaCrypto.addTarget(self, action: #selector(filtroLista(_:)), for: .editingChanged)
