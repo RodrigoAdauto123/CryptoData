@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ListaCryptoViewController: UIViewController {
 
@@ -14,8 +15,38 @@ class ListaCryptoViewController: UIViewController {
     var cryptoList: [Crypto]?
     var backupCryptoList: [Crypto] = []
     
+    var email: String?
+    let userDefaults = UserDefaults.standard
+    
+    @IBAction func cerrarSesionButton(_ sender: Any) {
+        
+        do {
+           try Auth.auth().signOut()
+            
+            //Borrando los datos de sesion
+            userDefaults.removeObject(forKey: "email")
+            userDefaults.synchronize()
+            
+            navigationController?.popViewController(animated: true)
+        } catch {
+            //Mostrar mensaje de error al cerrar sesion
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.setHidesBackButton(true, animated: false)
+        
+        
+        if let _ = userDefaults.object(forKey: "email"){
+            
+        } else {
+            
+            //Guardamos el correo
+            userDefaults.set(email, forKey: "email")
+            userDefaults.synchronize()
+        }
+        
         
         listaCrypto.dataSource = self
         
@@ -70,7 +101,7 @@ extension ListaCryptoViewController: UITableViewDataSource{
         
         cell.precioCrypto.text = crypto.currentPrice.conversionPrecio()
         
-        let porcentajeString :String = String (format: "%.3f", crypto.priceChange24h)
+        let porcentajeString :String = String (format: "%.3f", crypto.priceChangePercentage24h)
         cell.porcentajeCrypto.text = porcentajeString + "%"
         if(porcentajeString.contains("-")){
             cell.porcentajeCrypto.textColor = UIColor.red     }

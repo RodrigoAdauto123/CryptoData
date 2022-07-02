@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0HY-Ei-0jo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TUk-EL-SDP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -47,6 +47,9 @@
                                                 <rect key="frame" x="196" y="0.0" width="186" height="40"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Inicio Sesión"/>
+                                                <connections>
+                                                    <action selector="botonLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EdO-xy-64e"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -63,7 +66,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="EQ6-Iw-71X"/>
                     <connections>
-                        <segue destination="0HY-Ei-0jo" kind="show" id="v3O-CR-Tda"/>
+                        <outlet property="contraseniaLogin" destination="O26-nE-kDn" id="yGp-cW-YPR"/>
+                        <outlet property="correoLogin" destination="IvV-hZ-JV5" id="go5-GK-0F6"/>
+                        <outlet property="inicioSesionLogin" destination="YLQ-eP-3I9" id="8GT-Zj-vPT"/>
+                        <outlet property="loginStackView" destination="rnJ-0G-GFG" id="QTt-gz-qsu"/>
+                        <outlet property="registroLogin" destination="4dB-EL-Tj8" id="vZQ-q0-nbf"/>
+                        <segue destination="0HY-Ei-0jo" kind="show" identifier="loginSegue" id="v3O-CR-Tda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -190,6 +198,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLk-on-N7n">
+                                <rect key="frame" x="364" y="103" width="50" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Cerrar Sesión"/>
+                                <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system"/>
+                                <connections>
+                                    <action selector="cerrarSesionButton:" destination="0HY-Ei-0jo" eventType="touchUpInside" id="MI8-D6-s7W"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FCz-qf-W6j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -215,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKH-bT-7zg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2281" y="80"/>
+            <point key="canvasLocation" x="2279.7101449275365" y="79.6875"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="45a-KJ-vLv">
@@ -252,6 +270,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

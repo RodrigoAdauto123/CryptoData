@@ -13,7 +13,7 @@ struct Crypto: Decodable {
     let currentPrice: Double
     let totalVolume, high24H, low24H: Double
     let circulatingSupply: Double
-    let priceChange24h: Double
+    let priceChangePercentage24h: Double
     
     enum CodingKeys: String, CodingKey{
         case id, symbol, name, image
@@ -22,7 +22,7 @@ struct Crypto: Decodable {
         case high24H = "high_24h"
         case low24H = "low_24h"
         case circulatingSupply = "circulating_supply"
-        case priceChange24h = "price_change_24h"
+        case priceChangePercentage24h = "price_change_percentage_24h"
     }
 }
 

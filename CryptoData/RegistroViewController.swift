@@ -21,24 +21,18 @@ class RegistroViewController: UIViewController {
         if let correo = correoRegistro.text, let contrasenia = contraseniaRegistro.text {
             Auth.auth().createUser(withEmail: correo, password: contrasenia) { (result,error) in
                 if let result = result, error == nil{
+                    
                     self.navigationController?.popViewController(animated: true)
                     
                 }else {
-                    // Crear un alert para mostrar que hay error al crear el usuario
-                    print("Error")
+                    let alertaError = UIAlertController(title: "Error en registro de usuario", message: "Hubo un problema al registrar el usuario, revise que el correo ya no se encuentra en uso", preferredStyle: .alert)
+                    
+                    alertaError.addAction(UIAlertAction(title: "OK", style: .destructive))
+                    self.present(alertaError, animated: true, completion: nil)
                 }
             }
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
