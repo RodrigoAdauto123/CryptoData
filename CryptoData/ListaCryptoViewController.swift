@@ -10,6 +10,7 @@ import FirebaseAuth
 
 class ListaCryptoViewController: UIViewController {
 
+    
     @IBOutlet weak var filtroListaCrypto: UITextField!
     @IBOutlet weak var listaCrypto: UITableView!
     var cryptoList: [Crypto]?
@@ -36,9 +37,11 @@ class ListaCryptoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.setHidesBackButton(true, animated: false)
+        listaCrypto.dataSource = self
+        listaCrypto.delegate = self
         
         
-        if let _ = userDefaults.object(forKey: "email"){
+        if let _ = userDefaults.string(forKey: "email"){
             
         } else {
             
@@ -48,7 +51,7 @@ class ListaCryptoViewController: UIViewController {
         }
         
         
-        listaCrypto.dataSource = self
+        
         
         
         filtroListaCrypto.addTarget(self, action: #selector(filtroLista(_:)), for: .editingChanged)
@@ -77,7 +80,7 @@ extension ListaCryptoViewController{
     }
 }
 
-extension ListaCryptoViewController: UITableViewDataSource{
+extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,5 +113,39 @@ extension ListaCryptoViewController: UITableViewDataSource{
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetalleViewController") as? DetalleViewController
+        
+        guard let cryptoNoticia: NoticiaCrypto =  filtroNoticia(cryptoList![indexPath.row].name) else { let alerta = UIAlertController(title: "UPS", message: "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones.", preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
+            return
+        }
+        
+        vc?.simbolo =  cryptoList![indexPath.row].symbol
+        vc?.image = cryptoList![indexPath.row].image
+        vc?.nombre =  cryptoList![indexPath.row].name
+        vc?.precio = String(cryptoList![indexPath.row].currentPrice.conversionPrecio())
+        vc?.cambioPrecio = String (format: "%.3f", cryptoList![indexPath.row].priceChangePercentage24h)
+        vc?.tituloNoticia = cryptoNoticia.titulo
+        vc?.detalleNoticia = cryptoNoticia.detalleNoticia
+        vc?.fechaNoticia = cryptoNoticia.fechaNoticia
+        
+        
+        self.navigationController?.pushViewController(vc!, animated: true)
+        
+    }
+   
+    func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{
+        
+        let detalle: DetalleRepository?
+        detalle = DetalleLocalRepository()
+        guard let variable = detalle?.getDetalle() else { return nil}
+        for crypto in variable.crypto{
+            if (crypto.nombre.lowercased() == nombre.lowercased()){
+                return crypto
+            }
+        }
+        return nil
+    }
 }

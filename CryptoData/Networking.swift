@@ -25,7 +25,6 @@ extension ListaCryptoViewController{
                 print(error.localizedDescription)
             }
             
-//            debugPrint(response)
         }
     }
 }

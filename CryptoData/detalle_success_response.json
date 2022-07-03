@@ -1,0 +1,34 @@
+{
+    "success": true,
+    "crypto": [
+    {
+        "nombre": "Bitcoin",
+        "titulo": "El precio de bitcoin cae un 3% a mínimos de diez días mientras Ether se acerca a los USD 1,000",
+        "detalle_noticia": "\nEl precio de bitcoin (BTC) perdió un 3% en una hora y el de Ether (ETH) se acercó a los USD 1,000 el 30 de junio, ya que el pesimismo tomó el control de los mercados de criptomonedas.             El precio de Bitcoin se aferra a los USD 20,000 mientras los analistas advierten de turbulento camino en el futuro cercano.\n\nGráfico de velas de 1 hora del par BTC/USD (Bitstamp). Fuente: TradingViewLos traders observan un 'barrido de mínimos' para BTC Los datos de Cointelegraph Markets Pro y TradingView mostraron que el par BTC/USD alcanzó los USD 19,224 en Bitstamp durante las operaciones asiáticas, su mínimo desde el 19 de junio.\n\nLa falta de impulso en las subidas, combinada con la imposibilidad de recuperar el soporte crítico de la media móvil de 200 semanas, preparó el terreno para una nueva debilidad de bitcoin. La mayor criptomoneda se sumergió así en la zona de soporte definida un día antes por el colaborador de Cointelegraph Michaël van de Poppe.",
+        "fecha_noticia": "30.06.2022 14:05"
+    },
+    {
+        "nombre": "Ethereum",
+        "titulo": "Granjas solares Bitcoin dan una lección a Ethereum de cómo hacer más limpia la minería",
+        "detalle_noticia": "\nLa red Ethereum se acerca cada vez más a su meta de dejar de lado la minería teniendo entre sus argumentos el impacto ambiental de esta actividad y Bitcoin, por su parte, continúa minando con energía renovable. De haber una sola respuesta correcta, ¿cuál de los dos enfoques es el correcto?\n\nUno de los argumentos de Vitalik Buterin, cofundador de Ethereum, para dejar de lado la minería de criptomonedas en dicha red es su impacto ambiental. No es un secreto que la prueba de trabajo (PoW), algoritmo de consenso que usan redes como Bitcoin, Monero y (por ahora) Ethereum, requiere un alto consumo de electricidad que utiliza el hardware minero pueda procesar datos lo más rápido posible.",
+        "fecha_noticia": "01.07.2022 11:15"
+    },
+    {
+        "nombre": "Bnb",
+        "titulo": "El precio de BNB corre el riesgo de caer un 40% a medida que la SEC lanza una investigación contra Binance",
+        "detalle_noticia": "\nEl precio de Binance Coin (BNB) cayó casi un 7.3% el 7 de junio hasta situarse por debajo de los USD 275, su nivel más bajo en tres semanas.\n\nEs más, el precio de BNB podría caer otro 25%-40% en 2022, ya que su empresa matriz, Binance, se enfrenta a acusaciones de incumplir las normas de valores y de blanquear miles de millones de dólares en fondos ilícitos para delincuentes.\n\nDos malas noticias seguidas BNB se emitió como parte de una oferta inicial de monedas (ICO) en 2017 que amasó USD 15 millones para Binance.",
+        "fecha_noticia": "07.06.2022 19:05"
+    },
+    {
+        "nombre": "Cardano",
+        "titulo": "Se presenta la propuesta de bifurcación Vasil para Cardano",
+        "detalle_noticia": "\nEl desarrollador de la blockchain de Cardano (ADA), Input Output Hong Kong (IOHK), ha presentado una propuesta de actualización para realizar una bifurcación de la red de prueba de Cardano, iniciando la cuenta atrás para la actualización de la red principal Vasil.\n\nLa actualización Vasil traerá consigo 'mejoras significativas en el rendimiento y la capacidad' de la cadena de bloques. IOHK describe la bifurcación como la 'mayor y mejor actualización hasta la fecha', que proporcionará un mayor rendimiento, un mejor rendimiento de los scripts para los desarrolladores y menores costes.\n\nUna de las actualizaciones más significativas señaladas por el equipo es la implementación de la canalización de difusión, cuyo objetivo es mejorar la escalabilidad de las cadenas de bloques para las aplicaciones descentralizadas (DApps).",
+        "fecha_noticia": "30.06.2022 06:05"
+    },{
+        "nombre": "Solana",
+        "titulo": "Los traders debaten si es buen momento para invertir en Solana (SOL) ahora que está un 87% por debajo de su máximo histórico",
+        "detalle_noticia": "\nEl sector de las criptomonedas está atrapado en una profunda corrección y noticias recientes muestran que la mayoría de las altcoins han bajado más del 70% desde sus máximos de 2021. Solana se encuentra entre esa lista, y los inversores están indecisos sobre si el token tiene fundamentos lo suficientemente buenos como para justificar una inversión en SOL a su valoración actual. Datos de Cointelegraph Markets Pro y TradingView muestran que SOL ha bajado un 87.5% desde su máximo histórico y, dado el estado actual del mercado, la mayoría de las rupturas de precios no consiguen alcanzar un máximo diario.\n\nGráfico diario del par SOL/USDT. Fuente: TradingViewA pesar de las sombrías perspectivas, hay algunos aspectos positivos que podrían hacer de Solana un proyecto a seguir de cerca una vez que el mercado general entre en una fase de consolidación.",
+        "fecha_noticia": "30.06.2022 22:05"
+    }
+    ]
+}

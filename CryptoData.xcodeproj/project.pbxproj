@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		89107E9D28693F2A00C618FE /* LogueoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89107E9C28693F2A00C618FE /* LogueoViewController.swift */; };
 		89107E9F286946FA00C618FE /* RegistroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89107E9E286946FA00C618FE /* RegistroViewController.swift */; };
+		891436732870F81300E887CC /* NoticiaCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891436722870F81300E887CC /* NoticiaCrypto.swift */; };
+		8914367C2871033700E887CC /* DetalleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8914367B2871033700E887CC /* DetalleRepository.swift */; };
+		8914367E2871046C00E887CC /* DetalleLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8914367D2871046C00E887CC /* DetalleLocalRepository.swift */; };
+		891436802871112300E887CC /* DetalleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8914367F2871112300E887CC /* DetalleResponse.swift */; };
 		893998462867A96B001B1461 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893998452867A96B001B1461 /* Networking.swift */; };
 		893998482867AB44001B1461 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893998472867AB44001B1461 /* Crypto.swift */; };
 		8939984A2867DF0F001B1461 /* ListaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893998492867DF0F001B1461 /* ListaTableViewCell.swift */; };
@@ -20,6 +24,8 @@
 		89626897285BE628003DDAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89626896285BE628003DDAA9 /* Assets.xcassets */; };
 		8962689A285BE628003DDAA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89626898285BE628003DDAA9 /* LaunchScreen.storyboard */; };
 		89B84EE42868125F00C619B6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B84EE32868125F00C619B6 /* Double.swift */; };
+		89DF29172871175100E06CFA /* detalle_success_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 89DF29162871175100E06CFA /* detalle_success_response.json */; };
+		89DF291F287146EE00E06CFA /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF291E287146EE00E06CFA /* DetalleViewController.swift */; };
 		89E46D98286622AA007199FD /* ListaCryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E46D97286622AA007199FD /* ListaCryptoViewController.swift */; };
 		ED1312936EF513878C904C7B /* Pods_CryptoData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9418B0B8DAE5CE057C266A /* Pods_CryptoData.framework */; };
 /* End PBXBuildFile section */
@@ -28,6 +34,10 @@
 		3B63C34AC7166A9039276A3F /* Pods-CryptoData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoData.debug.xcconfig"; path = "Target Support Files/Pods-CryptoData/Pods-CryptoData.debug.xcconfig"; sourceTree = "<group>"; };
 		89107E9C28693F2A00C618FE /* LogueoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogueoViewController.swift; sourceTree = "<group>"; };
 		89107E9E286946FA00C618FE /* RegistroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroViewController.swift; sourceTree = "<group>"; };
+		891436722870F81300E887CC /* NoticiaCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticiaCrypto.swift; sourceTree = "<group>"; };
+		8914367B2871033700E887CC /* DetalleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleRepository.swift; sourceTree = "<group>"; };
+		8914367D2871046C00E887CC /* DetalleLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleLocalRepository.swift; sourceTree = "<group>"; };
+		8914367F2871112300E887CC /* DetalleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleResponse.swift; sourceTree = "<group>"; };
 		893998452867A96B001B1461 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		893998472867AB44001B1461 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		893998492867DF0F001B1461 /* ListaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaTableViewCell.swift; sourceTree = "<group>"; };
@@ -41,6 +51,8 @@
 		89626899285BE628003DDAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8962689B285BE628003DDAA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89B84EE32868125F00C619B6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		89DF29162871175100E06CFA /* detalle_success_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detalle_success_response.json; sourceTree = "<group>"; };
+		89DF291E287146EE00E06CFA /* DetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
 		89E46D97286622AA007199FD /* ListaCryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaCryptoViewController.swift; sourceTree = "<group>"; };
 		EA1185D9FB34AED0DE1AC41D /* Pods-CryptoData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoData.release.xcconfig"; path = "Target Support Files/Pods-CryptoData/Pods-CryptoData.release.xcconfig"; sourceTree = "<group>"; };
 		FF9418B0B8DAE5CE057C266A /* Pods_CryptoData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +79,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8914367A287102ED00E887CC /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8914367B2871033700E887CC /* DetalleRepository.swift */,
+				8914367D2871046C00E887CC /* DetalleLocalRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		89626881285BE627003DDAA9 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +109,7 @@
 		8962688C285BE627003DDAA9 /* CryptoData */ = {
 			isa = PBXGroup;
 			children = (
+				8914367A287102ED00E887CC /* Repository */,
 				8962688D285BE627003DDAA9 /* AppDelegate.swift */,
 				8962688F285BE627003DDAA9 /* SceneDelegate.swift */,
 				89626891285BE627003DDAA9 /* ViewController.swift */,
@@ -103,6 +125,10 @@
 				89B84EE32868125F00C619B6 /* Double.swift */,
 				895A73B928692122006C79A2 /* GoogleService-Info.plist */,
 				89107E9E286946FA00C618FE /* RegistroViewController.swift */,
+				891436722870F81300E887CC /* NoticiaCrypto.swift */,
+				89DF29162871175100E06CFA /* detalle_success_response.json */,
+				8914367F2871112300E887CC /* DetalleResponse.swift */,
+				89DF291E287146EE00E06CFA /* DetalleViewController.swift */,
 			);
 			path = CryptoData;
 			sourceTree = "<group>";
@@ -177,6 +203,7 @@
 			files = (
 				8962689A285BE628003DDAA9 /* LaunchScreen.storyboard in Resources */,
 				895A73BA28692122006C79A2 /* GoogleService-Info.plist in Resources */,
+				89DF29172871175100E06CFA /* detalle_success_response.json in Resources */,
 				89626897285BE628003DDAA9 /* Assets.xcassets in Resources */,
 				89626895285BE627003DDAA9 /* Main.storyboard in Resources */,
 			);
@@ -231,16 +258,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				891436802871112300E887CC /* DetalleResponse.swift in Sources */,
 				8939984A2867DF0F001B1461 /* ListaTableViewCell.swift in Sources */,
 				893998482867AB44001B1461 /* Crypto.swift in Sources */,
 				89B84EE42868125F00C619B6 /* Double.swift in Sources */,
+				8914367E2871046C00E887CC /* DetalleLocalRepository.swift in Sources */,
 				89107E9F286946FA00C618FE /* RegistroViewController.swift in Sources */,
+				89DF291F287146EE00E06CFA /* DetalleViewController.swift in Sources */,
 				89107E9D28693F2A00C618FE /* LogueoViewController.swift in Sources */,
+				8914367C2871033700E887CC /* DetalleRepository.swift in Sources */,
 				89626892285BE627003DDAA9 /* ViewController.swift in Sources */,
 				893998462867A96B001B1461 /* Networking.swift in Sources */,
 				8962688E285BE627003DDAA9 /* AppDelegate.swift in Sources */,
 				89626890285BE627003DDAA9 /* SceneDelegate.swift in Sources */,
 				89E46D98286622AA007199FD /* ListaCryptoViewController.swift in Sources */,
+				891436732870F81300E887CC /* NoticiaCrypto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

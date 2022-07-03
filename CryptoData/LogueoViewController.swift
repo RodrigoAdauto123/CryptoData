@@ -23,11 +23,11 @@ class LogueoViewController: UIViewController {
         if let email = correoLogin.text, let contrasenia = contraseniaLogin.text {
             Auth.auth().signIn(withEmail: email, password: contrasenia) { result, error in
                 if let result = result, error == nil{
-                     
-                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    let usuario = result.user
+                    self.performSegue(withIdentifier: "loginSegue", sender: usuario)
                       
                 } else {
-                    let alertController = UIAlertController(title: "Erro", message: "No se puede iniciar sesión", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Error", message: "No se puede iniciar sesión", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alertController, animated: true, completion: nil)
                 }
@@ -53,7 +53,7 @@ class LogueoViewController: UIViewController {
         if let s = segue.identifier, s == "loginSegue"{
             if let correo = correoLogin.text {
                 let viewController = segue.destination as? ListaCryptoViewController
-                viewController?.email = correoLogin.text
+                viewController?.email = correo
             }
             
              
