@@ -57,9 +57,24 @@ class ListaCryptoViewController: UIViewController {
         filtroListaCrypto.addTarget(self, action: #selector(filtroLista(_:)), for: .editingChanged)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        // Cada vez que regresa hacia atras, se actualiza la lista de cryptomonedas
+        if animated == true{
+            self.listaCrypto.reloadData()
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
-        requestModel()
+        
+        let listaRepository: CryptoRepository
+        listaRepository = CryptoRemoteRepository()
+        listaRepository.getCrypto { listaCrypto in
+            if let listaCrypto = listaCrypto{
+                self.cryptoList = listaCrypto
+                self.listaCrypto.reloadData()
+                self.backupCryptoList = listaCrypto
+            }
+        }
     }
     
 }

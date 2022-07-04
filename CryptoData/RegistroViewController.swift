@@ -10,15 +10,17 @@ import FirebaseAuth
 
 class RegistroViewController: UIViewController {
 
+    @IBOutlet weak var repitaContrasenia: UITextField!
     @IBOutlet weak var contraseniaRegistro: UITextField!
     @IBOutlet weak var correoRegistro: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Registro de usuario"
 
     }
     
     @IBAction func registroUsuarioAction(_ sender: Any) {
-        if let correo = correoRegistro.text, let contrasenia = contraseniaRegistro.text {
+        if let correo = correoRegistro.text, let contrasenia = contraseniaRegistro.text, let repitaContrasenia = repitaContrasenia.text, contrasenia.elementsEqual(repitaContrasenia) {
             Auth.auth().createUser(withEmail: correo, password: contrasenia) { (result,error) in
                 if let result = result, error == nil{
                     
