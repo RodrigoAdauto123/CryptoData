@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetalleViewController: UIViewController {
 
     
+    @IBOutlet weak var imageDetalleCrypto: UIImageView!
     @IBOutlet weak var fechaNoticiaCrypto: UILabel!
     @IBOutlet weak var detalleNoticiaCrypto: UILabel!
     @IBOutlet weak var tituloNoticiaCrypto: UILabel!
@@ -35,6 +37,9 @@ class DetalleViewController: UIViewController {
             cambioPrecioCrypto.text = "\(cambioPrecio)%"
             if(cambioPrecio.contains("-")){
                 cambioPrecioCrypto.textColor = UIColor.red
+            }
+            if let image = image{
+                imageDetalleCrypto.kf.setImage(with: URL(string: image))
             }
             tituloNoticiaCrypto.text = tituloNoticia
             detalleNoticiaCrypto.text = detalleNoticia

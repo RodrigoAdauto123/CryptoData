@@ -27,9 +27,10 @@ class LogueoViewController: UIViewController {
                     self.performSegue(withIdentifier: "loginSegue", sender: usuario)
                       
                 } else {
-                    let alertController = UIAlertController(title: "Error", message: "No se puede iniciar sesión", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alertController, animated: true, completion: nil)
+//                    let alertController = UIAlertController(title: "Error", message: "No se puede iniciar sesión", preferredStyle: .alert)
+//                    alertController.addAction(UIAlertAction(title: "OK", style: .default))
+                    
+                    self.present(self.crearAlert(titulo: "Error", mensaje: "No se puede iniciar sesión", tituloBoton: "OK"), animated: true, completion: nil)
                 }
             }
         }
@@ -38,14 +39,8 @@ class LogueoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Inicio de Sesión"
-
         if let _ = userDefaults.object(forKey: "email"){
-     
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            
-//            loginStackView.isHidden = true
-//            self.navigationController?.pushViewController(ListaCryptoViewController(), animated: true)
-            
         }
     }
     
@@ -55,10 +50,12 @@ class LogueoViewController: UIViewController {
                 let viewController = segue.destination as? ListaCryptoViewController
                 viewController?.email = correo
             }
-            
-             
         }
     }
-
-
+    
+    func crearAlert(titulo: String, mensaje: String, tituloBoton: String) -> UIAlertController{
+        let alertController = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: tituloBoton, style: .default))
+        return alertController
+    }
 }

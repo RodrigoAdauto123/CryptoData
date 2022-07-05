@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Kingfisher
 
 class ListaCryptoViewController: UIViewController {
 
@@ -113,6 +114,7 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
         }
         
         let crypto = cryptoList![indexPath.row]
+        cell.imageViewCrypto.kf.setImage(with: URL(string: crypto.image))
         cell.simboloCrypto.text =  crypto.name + " (" + crypto.symbol.uppercased() + ")"
         
         

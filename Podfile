@@ -12,6 +12,7 @@ target 'CryptoData' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'FirebaseAnalytics'
+  pod 'Kingfisher'
 
 
 end

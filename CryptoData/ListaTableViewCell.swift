@@ -10,6 +10,7 @@ import UIKit
 class ListaTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var imageViewCrypto: UIImageView!
     @IBOutlet weak var porcentajeCrypto: UILabel!
     @IBOutlet weak var simboloCrypto: UILabel!
     @IBOutlet weak var precioCrypto: UILabel!
