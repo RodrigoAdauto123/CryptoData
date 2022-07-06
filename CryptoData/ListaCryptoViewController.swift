@@ -19,6 +19,7 @@ class ListaCryptoViewController: UIViewController {
     
     var email: String?
     let userDefaults = UserDefaults.standard
+    let alertaClass = MensajeAlert()
     
     @IBAction func cerrarSesionButton(_ sender: Any) {
         
@@ -31,7 +32,7 @@ class ListaCryptoViewController: UIViewController {
             
             navigationController?.popViewController(animated: true)
         } catch {
-            //Mostrar mensaje de error al cerrar sesion
+            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error", tituloBoton: "Intentare de nuevo"), animated: true)
         }
     }
     
@@ -40,21 +41,12 @@ class ListaCryptoViewController: UIViewController {
         navigationItem.setHidesBackButton(true, animated: false)
         listaCrypto.dataSource = self
         listaCrypto.delegate = self
-        
-        
         if let _ = userDefaults.string(forKey: "email"){
-            
         } else {
-            
             //Guardamos el correo
             userDefaults.set(email, forKey: "email")
             userDefaults.synchronize()
         }
-        
-        
-        
-        
-        
         filtroListaCrypto.addTarget(self, action: #selector(filtroLista(_:)), for: .editingChanged)
         
     }
@@ -72,8 +64,8 @@ class ListaCryptoViewController: UIViewController {
         listaRepository.getCrypto { listaCrypto in
             if let listaCrypto = listaCrypto{
                 self.cryptoList = listaCrypto
-                self.listaCrypto.reloadData()
                 self.backupCryptoList = listaCrypto
+                self.listaCrypto.reloadData()
             }
         }
     }
@@ -112,30 +104,26 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListaTableViewCell else {
             fatalError("Sin servicio")
         }
-        
         let crypto = cryptoList![indexPath.row]
         cell.imageViewCrypto.kf.setImage(with: URL(string: crypto.image))
         cell.simboloCrypto.text =  crypto.name + " (" + crypto.symbol.uppercased() + ")"
-        
-        
-        
         cell.precioCrypto.text = crypto.currentPrice.conversionPrecio()
         
         let porcentajeString :String = String (format: "%.3f", crypto.priceChangePercentage24h)
         cell.porcentajeCrypto.text = porcentajeString + "%"
         if(porcentajeString.contains("-")){
-            cell.porcentajeCrypto.textColor = UIColor.red     }
-        
-       
+            cell.porcentajeCrypto.textColor = UIColor.red} else {
+                cell.porcentajeCrypto.textColor = UIColor.init(red: 0.05, green: 0.46, blue: 0.13, alpha: 0.93)
+            }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetalleViewController") as? DetalleViewController
         
-        guard let cryptoNoticia: NoticiaCrypto =  filtroNoticia(cryptoList![indexPath.row].name) else { let alerta = UIAlertController(title: "UPS", message: "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones.", preferredStyle: .alert)
-            alerta.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alerta, animated: true, completion: nil)
+        guard let cryptoNoticia: NoticiaCrypto =  filtroNoticia(cryptoList![indexPath.row].name) else {
+            
+            self.present(alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones", tituloBoton: "OK"), animated: true, completion: nil)
             return
         }
         
@@ -147,10 +135,7 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
         vc?.tituloNoticia = cryptoNoticia.titulo
         vc?.detalleNoticia = cryptoNoticia.detalleNoticia
         vc?.fechaNoticia = cryptoNoticia.fechaNoticia
-        
-        
         self.navigationController?.pushViewController(vc!, animated: true)
-        
     }
    
     func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{

@@ -44,12 +44,7 @@ class DetalleViewController: UIViewController {
             tituloNoticiaCrypto.text = tituloNoticia
             detalleNoticiaCrypto.text = detalleNoticia
             fechaNoticiaCrypto.text = fechaNoticia
-        }
-        
-        
-        
-        
-        
+        }     
     }
     
 }

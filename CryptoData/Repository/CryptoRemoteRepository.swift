@@ -23,11 +23,7 @@ class CryptoRemoteRepository: CryptoRepository{
             case .failure(_):
                 completion(nil)
                 
-                
             }
-
         }
-        
     }
-    
 }

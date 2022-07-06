@@ -17,6 +17,7 @@ class LogueoViewController: UIViewController {
     @IBOutlet weak var registroLogin: UIButton!
     
     let userDefaults = UserDefaults.standard
+    let mensajeClass = MensajeAlert()
     
     
     @IBAction func botonLogin(_ sender: Any) {
@@ -27,10 +28,7 @@ class LogueoViewController: UIViewController {
                     self.performSegue(withIdentifier: "loginSegue", sender: usuario)
                       
                 } else {
-//                    let alertController = UIAlertController(title: "Error", message: "No se puede iniciar sesión", preferredStyle: .alert)
-//                    alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                    
-                    self.present(self.crearAlert(titulo: "Error", mensaje: "No se puede iniciar sesión", tituloBoton: "OK"), animated: true, completion: nil)
+                    self.present(self.mensajeClass.crearMensajeAlert(titulo: "Error", mensaje: "No se puede iniciar sesión", tituloBoton: "OK"), animated: true, completion: nil)
                 }
             }
         }

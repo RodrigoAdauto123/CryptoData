@@ -24,6 +24,10 @@
 		89626895285BE627003DDAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89626893285BE627003DDAA9 /* Main.storyboard */; };
 		89626897285BE628003DDAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89626896285BE628003DDAA9 /* Assets.xcassets */; };
 		8962689A285BE628003DDAA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89626898285BE628003DDAA9 /* LaunchScreen.storyboard */; };
+		898B56332874F0E2008564F4 /* MensajeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B56322874F0E2008564F4 /* MensajeAlert.swift */; };
+		898B5637287518FF008564F4 /* CryptoLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B5636287518FF008564F4 /* CryptoLocalRepository.swift */; };
+		898B5639287519E0008564F4 /* CryptoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B5638287519E0008564F4 /* CryptoResponse.swift */; };
+		898B563D28751A62008564F4 /* crypto_success_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 898B563C28751A62008564F4 /* crypto_success_response.json */; };
 		89B84EE42868125F00C619B6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B84EE32868125F00C619B6 /* Double.swift */; };
 		89DF29172871175100E06CFA /* detalle_success_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 89DF29162871175100E06CFA /* detalle_success_response.json */; };
 		89DF291F287146EE00E06CFA /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF291E287146EE00E06CFA /* DetalleViewController.swift */; };
@@ -52,6 +56,10 @@
 		89626896285BE628003DDAA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89626899285BE628003DDAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8962689B285BE628003DDAA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		898B56322874F0E2008564F4 /* MensajeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensajeAlert.swift; sourceTree = "<group>"; };
+		898B5636287518FF008564F4 /* CryptoLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoLocalRepository.swift; sourceTree = "<group>"; };
+		898B5638287519E0008564F4 /* CryptoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoResponse.swift; sourceTree = "<group>"; };
+		898B563C28751A62008564F4 /* crypto_success_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crypto_success_response.json; sourceTree = "<group>"; };
 		89B84EE32868125F00C619B6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		89DF29162871175100E06CFA /* detalle_success_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detalle_success_response.json; sourceTree = "<group>"; };
 		89DF291E287146EE00E06CFA /* DetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +96,7 @@
 				8914367D2871046C00E887CC /* DetalleLocalRepository.swift */,
 				891E17D92872347100C9D85A /* CryptoRepository.swift */,
 				891E17DB287237FA00C9D85A /* CryptoRemoteRepository.swift */,
+				898B5636287518FF008564F4 /* CryptoLocalRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -113,6 +122,7 @@
 		8962688C285BE627003DDAA9 /* CryptoData */ = {
 			isa = PBXGroup;
 			children = (
+				898B56352874FA9A008564F4 /* Fonts */,
 				898B56312873B242008564F4 /* Data */,
 				898B56302873B1FA008564F4 /* Model */,
 				8914367A287102ED00E887CC /* Repository */,
@@ -120,16 +130,16 @@
 				8962688F285BE627003DDAA9 /* SceneDelegate.swift */,
 				89626891285BE627003DDAA9 /* ViewController.swift */,
 				89107E9C28693F2A00C618FE /* LogueoViewController.swift */,
+				89107E9E286946FA00C618FE /* RegistroViewController.swift */,
 				89626893285BE627003DDAA9 /* Main.storyboard */,
+				89626898285BE628003DDAA9 /* LaunchScreen.storyboard */,
+				89E46D97286622AA007199FD /* ListaCryptoViewController.swift */,
 				893998492867DF0F001B1461 /* ListaTableViewCell.swift */,
 				89626896285BE628003DDAA9 /* Assets.xcassets */,
-				89626898285BE628003DDAA9 /* LaunchScreen.storyboard */,
 				8962689B285BE628003DDAA9 /* Info.plist */,
-				89E46D97286622AA007199FD /* ListaCryptoViewController.swift */,
-				89B84EE32868125F00C619B6 /* Double.swift */,
 				895A73B928692122006C79A2 /* GoogleService-Info.plist */,
-				89107E9E286946FA00C618FE /* RegistroViewController.swift */,
 				89DF291E287146EE00E06CFA /* DetalleViewController.swift */,
+				898B56322874F0E2008564F4 /* MensajeAlert.swift */,
 			);
 			path = CryptoData;
 			sourceTree = "<group>";
@@ -140,6 +150,7 @@
 				893998472867AB44001B1461 /* Crypto.swift */,
 				891436722870F81300E887CC /* NoticiaCrypto.swift */,
 				8914367F2871112300E887CC /* DetalleResponse.swift */,
+				898B5638287519E0008564F4 /* CryptoResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,8 +159,17 @@
 			isa = PBXGroup;
 			children = (
 				89DF29162871175100E06CFA /* detalle_success_response.json */,
+				898B563C28751A62008564F4 /* crypto_success_response.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		898B56352874FA9A008564F4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				89B84EE32868125F00C619B6 /* Double.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		F67A999EE7D17628326B276B /* Frameworks */ = {
@@ -220,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898B563D28751A62008564F4 /* crypto_success_response.json in Resources */,
 				8962689A285BE628003DDAA9 /* LaunchScreen.storyboard in Resources */,
 				895A73BA28692122006C79A2 /* GoogleService-Info.plist in Resources */,
 				89DF29172871175100E06CFA /* detalle_success_response.json in Resources */,
@@ -281,6 +302,7 @@
 				8939984A2867DF0F001B1461 /* ListaTableViewCell.swift in Sources */,
 				891E17DA2872347100C9D85A /* CryptoRepository.swift in Sources */,
 				893998482867AB44001B1461 /* Crypto.swift in Sources */,
+				898B5639287519E0008564F4 /* CryptoResponse.swift in Sources */,
 				891E17DC287237FA00C9D85A /* CryptoRemoteRepository.swift in Sources */,
 				89B84EE42868125F00C619B6 /* Double.swift in Sources */,
 				8914367E2871046C00E887CC /* DetalleLocalRepository.swift in Sources */,
@@ -291,6 +313,8 @@
 				89626892285BE627003DDAA9 /* ViewController.swift in Sources */,
 				8962688E285BE627003DDAA9 /* AppDelegate.swift in Sources */,
 				89626890285BE627003DDAA9 /* SceneDelegate.swift in Sources */,
+				898B5637287518FF008564F4 /* CryptoLocalRepository.swift in Sources */,
+				898B56332874F0E2008564F4 /* MensajeAlert.swift in Sources */,
 				89E46D98286622AA007199FD /* ListaCryptoViewController.swift in Sources */,
 				891436732870F81300E887CC /* NoticiaCrypto.swift in Sources */,
 			);
