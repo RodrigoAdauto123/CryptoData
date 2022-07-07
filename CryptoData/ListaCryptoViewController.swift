@@ -12,7 +12,6 @@ import Kingfisher
 class ListaCryptoViewController: UIViewController {
 
     
-    @IBOutlet weak var filtroListaCrypto: UITextField!
     @IBOutlet weak var listaCrypto: UITableView!
     var cryptoList: [Crypto]?
     var backupCryptoList: [Crypto] = []
@@ -49,8 +48,6 @@ class ListaCryptoViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
         
-        
-        
         listaCrypto.dataSource = self
         listaCrypto.delegate = self
         if let _ = userDefaults.string(forKey: "email"){
@@ -59,7 +56,6 @@ class ListaCryptoViewController: UIViewController {
             userDefaults.set(email, forKey: "email")
             userDefaults.synchronize()
         }
-//        filtroListaCrypto.addTarget(self, action: #selector(filtroLista(_:)), for: .editingChanged)
         
     }
     
@@ -97,37 +93,7 @@ class ListaCryptoViewController: UIViewController {
             }
         }
     }
-    @IBAction func cerrarSesionButton(_ sender: Any) {
-        
-        do {
-           try Auth.auth().signOut()
-            
-            //Borrando los datos de sesion
-            userDefaults.removeObject(forKey: "email")
-            userDefaults.synchronize()
-            
-            navigationController?.popViewController(animated: true)
-        } catch {
-            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error", tituloBoton: "Intentare de nuevo"), animated: true)
-        }
-    }
 }
-
-//extension ListaCryptoViewController{
-//
-//    @objc func filtroLista(_ filtro: UITextField){
-//
-//        var listafiltrada: [Crypto] = []
-//        let texto = filtro.text ?? ""
-//        for crypto in backupCryptoList{
-//            if (crypto.name.lowercased().contains(texto.lowercased())){
-//                listafiltrada.append(crypto)
-//            }
-//        }
-//        cryptoList = (texto.count > 0) ? listafiltrada : backupCryptoList
-//        listaCrypto.reloadData()
-//    }
-//}
 
 extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     
@@ -160,15 +126,6 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let selectedProduct: Crypto?
-        
-        // Check to see which table view cell was selected.
-        if tableView === self.listaCrypto {
-            selectedProduct = cryptoList?[indexPath.row]
-        } else {
-            selectedProduct = resultadoCryptoTableViewController?.productosFiltrados?[indexPath.row]
-        }
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetalleViewController") as? DetalleViewController
         
@@ -212,13 +169,7 @@ extension ListaCryptoViewController:UISearchBarDelegate{
     }
 }
 
-extension ListaCryptoViewController: UISearchControllerDelegate{
-    func presentSearchController(_ searchController: UISearchController) {
-    
-    }
-    
-}
-extension ListaCryptoViewController: UISearchResultsUpdating{
+extension ListaCryptoViewController: UISearchResultsUpdating, UISearchControllerDelegate{
     
     
         func updateSearchResults(for searchController: UISearchController) {

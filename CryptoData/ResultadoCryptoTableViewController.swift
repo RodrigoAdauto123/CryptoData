@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ResultadoCryptoTableViewController: UITableViewController {
 
     var productosFiltrados: [Crypto]?
     let alertaClass = MensajeAlert()
-    
+    let userDefaults = UserDefaults.standard
     
     
     override func viewDidLoad() {
@@ -22,14 +23,22 @@ class ResultadoCryptoTableViewController: UITableViewController {
     }
 
     @objc func cerrarSesion(){
-        
+        do {
+           try Auth.auth().signOut()
+            
+            //Borrando los datos de sesion
+            userDefaults.removeObject(forKey: "email")
+            userDefaults.synchronize()
+            
+            navigationController?.popViewController(animated: true)
+        } catch {
+            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error", tituloBoton: "Intentare de nuevo"), animated: true)
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let cryptos = productosFiltrados else{
-            return 0
-        }
+        guard let cryptos = productosFiltrados else{return 0}
         return cryptos.count
     }
 
@@ -37,8 +46,7 @@ class ResultadoCryptoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: "cellResultado", for: indexPath) as? ResultadoListaTableViewCell else {
-            fatalError("Sin servicio")
-        }
+            fatalError("Sin servicio")}
         let crypto = productosFiltrados![indexPath.row]
         cell.detalleImageCell.kf.setImage(with: URL(string: crypto.image))
         cell.detalleSimboloCell.text =  crypto.name + " (" + crypto.symbol.uppercased() + ")"
@@ -53,10 +61,6 @@ class ResultadoCryptoTableViewController: UITableViewController {
         return cell
     }
     
-
-
-    
-
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetalleViewController") as? DetalleViewController
@@ -86,9 +90,7 @@ class ResultadoCryptoTableViewController: UITableViewController {
         detalle = DetalleLocalRepository()
         guard let variable = detalle?.getDetalle() else { return nil}
         for crypto in variable.crypto{
-            if (crypto.nombre.lowercased() == nombre.lowercased()){
-                return crypto
-            }
+            if (crypto.nombre.lowercased() == nombre.lowercased()){          return crypto}
         }
         return nil
     }
