@@ -12,6 +12,7 @@ import Kingfisher
 class ListaCryptoViewController: UIViewController {
 
     
+    
     @IBOutlet weak var listaCrypto: UITableView!
     var cryptoList: [Crypto]?
     var backupCryptoList: [Crypto] = []
@@ -24,11 +25,23 @@ class ListaCryptoViewController: UIViewController {
     private var resultadoCryptoTableViewController: ResultadoCryptoTableViewController?
     var filteredCrypto = [Crypto]()
     
+    @IBAction func cerrarSesionBarButton(_ sender: Any) {
+        do {
+           try Auth.auth().signOut()
+            
+            //Borrando los datos de sesion
+            userDefaults.removeObject(forKey: "email")
+            userDefaults.synchronize()
+            
+            navigationController?.popViewController(animated: true)
+        } catch {
+            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error", tituloBoton: "Intentare de nuevo"), animated: true)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Cryptomonedas"
-        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Cerrar Sesion", style: .plain, target: self, action: #selector(cerrarSesion))
         
         
         navigationItem.setHidesBackButton(true, animated: false)
@@ -57,20 +70,6 @@ class ListaCryptoViewController: UIViewController {
             userDefaults.synchronize()
         }
         
-    }
-    
-    @objc func cerrarSesion(){
-        do {
-           try Auth.auth().signOut()
-            
-            //Borrando los datos de sesion
-            userDefaults.removeObject(forKey: "email")
-            userDefaults.synchronize()
-            
-            navigationController?.popViewController(animated: true)
-        } catch {
-            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error", tituloBoton: "Intentare de nuevo"), animated: true)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

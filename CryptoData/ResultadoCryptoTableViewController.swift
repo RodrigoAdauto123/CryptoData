@@ -18,24 +18,8 @@ class ResultadoCryptoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Cryptomonedas"
-        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Cerrar Sesion", style: .plain, target: self, action: #selector(cerrarSesion))
         
     }
-
-    @objc func cerrarSesion(){
-        do {
-           try Auth.auth().signOut()
-            
-            //Borrando los datos de sesion
-            userDefaults.removeObject(forKey: "email")
-            userDefaults.synchronize()
-            
-            navigationController?.popViewController(animated: true)
-        } catch {
-            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error", tituloBoton: "Intentare de nuevo"), animated: true)
-        }
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard let cryptos = productosFiltrados else{return 0}
