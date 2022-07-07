@@ -28,6 +28,9 @@
 		898B5637287518FF008564F4 /* CryptoLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B5636287518FF008564F4 /* CryptoLocalRepository.swift */; };
 		898B5639287519E0008564F4 /* CryptoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B5638287519E0008564F4 /* CryptoResponse.swift */; };
 		898B563D28751A62008564F4 /* crypto_success_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 898B563C28751A62008564F4 /* crypto_success_response.json */; };
+		898B563F2875DF3F008564F4 /* ResultadoListaCryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B563E2875DF3F008564F4 /* ResultadoListaCryptoViewController.swift */; };
+		898B56412875E2C0008564F4 /* ResultadoListaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */; };
+		898B564328763C14008564F4 /* ResultadoCryptoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */; };
 		89B84EE42868125F00C619B6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B84EE32868125F00C619B6 /* Double.swift */; };
 		89DF29172871175100E06CFA /* detalle_success_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 89DF29162871175100E06CFA /* detalle_success_response.json */; };
 		89DF291F287146EE00E06CFA /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF291E287146EE00E06CFA /* DetalleViewController.swift */; };
@@ -60,6 +63,9 @@
 		898B5636287518FF008564F4 /* CryptoLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoLocalRepository.swift; sourceTree = "<group>"; };
 		898B5638287519E0008564F4 /* CryptoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoResponse.swift; sourceTree = "<group>"; };
 		898B563C28751A62008564F4 /* crypto_success_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crypto_success_response.json; sourceTree = "<group>"; };
+		898B563E2875DF3F008564F4 /* ResultadoListaCryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultadoListaCryptoViewController.swift; sourceTree = "<group>"; };
+		898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultadoListaTableViewCell.swift; sourceTree = "<group>"; };
+		898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultadoCryptoTableViewController.swift; sourceTree = "<group>"; };
 		89B84EE32868125F00C619B6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		89DF29162871175100E06CFA /* detalle_success_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detalle_success_response.json; sourceTree = "<group>"; };
 		89DF291E287146EE00E06CFA /* DetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 				895A73B928692122006C79A2 /* GoogleService-Info.plist */,
 				89DF291E287146EE00E06CFA /* DetalleViewController.swift */,
 				898B56322874F0E2008564F4 /* MensajeAlert.swift */,
+				898B563E2875DF3F008564F4 /* ResultadoListaCryptoViewController.swift */,
+				898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */,
+				898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */,
 			);
 			path = CryptoData;
 			sourceTree = "<group>";
@@ -301,9 +310,12 @@
 				891436802871112300E887CC /* DetalleResponse.swift in Sources */,
 				8939984A2867DF0F001B1461 /* ListaTableViewCell.swift in Sources */,
 				891E17DA2872347100C9D85A /* CryptoRepository.swift in Sources */,
+				898B563F2875DF3F008564F4 /* ResultadoListaCryptoViewController.swift in Sources */,
 				893998482867AB44001B1461 /* Crypto.swift in Sources */,
 				898B5639287519E0008564F4 /* CryptoResponse.swift in Sources */,
+				898B56412875E2C0008564F4 /* ResultadoListaTableViewCell.swift in Sources */,
 				891E17DC287237FA00C9D85A /* CryptoRemoteRepository.swift in Sources */,
+				898B564328763C14008564F4 /* ResultadoCryptoTableViewController.swift in Sources */,
 				89B84EE42868125F00C619B6 /* Double.swift in Sources */,
 				8914367E2871046C00E887CC /* DetalleLocalRepository.swift in Sources */,
 				89107E9F286946FA00C618FE /* RegistroViewController.swift in Sources */,
