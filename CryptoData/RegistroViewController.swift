@@ -7,9 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import Lottie
 
 class RegistroViewController: UIViewController {
 
+    @IBOutlet weak var registroAnimated: AnimationView!
     @IBOutlet weak var repitaContrasenia: UITextField!
     @IBOutlet weak var contraseniaRegistro: UITextField!
     @IBOutlet weak var correoRegistro: UITextField!
@@ -17,6 +19,8 @@ class RegistroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Registro de usuario"
+        cryptoAnimacion()
+        
     }
     
     @IBAction func registroUsuarioAction(_ sender: Any) {
@@ -29,5 +33,12 @@ class RegistroViewController: UIViewController {
                 }
             }
         }
+    }
+    func cryptoAnimacion(){
+        registroAnimated.center = view.center
+        registroAnimated.contentMode = .scaleAspectFill
+        registroAnimated.loopMode = .loop
+        registroAnimated.play()
+        
     }
 }

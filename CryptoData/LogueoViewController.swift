@@ -7,9 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import Lottie
 
 class LogueoViewController: UIViewController {
 
+    @IBOutlet weak var inicioAnimated: AnimationView!
     @IBOutlet weak var loginStackView: UIStackView!
     @IBOutlet weak var contraseniaLogin: UITextField!
     @IBOutlet weak var correoLogin: UITextField!
@@ -19,6 +21,38 @@ class LogueoViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     let mensajeClass = MensajeAlert()
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "CryptoData"
+        
+        navigationItem.setHidesBackButton(true, animated: false)
+        if let _ = userDefaults.object(forKey: "email"){
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }else {
+            cryptoAnimacion()
+        }
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        correoLogin.text = ""
+        contraseniaLogin.text = ""
+        if let _ = userDefaults.object(forKey: "email"){
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }else {
+            cryptoAnimacion()
+            
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let s = segue.identifier, s == "loginSegue"{
+            if let correo = correoLogin.text {
+                let viewController = segue.destination as? ListaCryptoViewController
+                viewController?.email = correo
+            }
+        }
+    }
     
     @IBAction func botonLogin(_ sender: Any) {
         if let email = correoLogin.text, let contrasenia = contraseniaLogin.text {
@@ -34,26 +68,11 @@ class LogueoViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "Inicio de Sesión"
-        if let _ = userDefaults.object(forKey: "email"){
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let s = segue.identifier, s == "loginSegue"{
-            if let correo = correoLogin.text {
-                let viewController = segue.destination as? ListaCryptoViewController
-                viewController?.email = correo
-            }
-        }
-    }
-    
-    func crearAlert(titulo: String, mensaje: String, tituloBoton: String) -> UIAlertController{
-        let alertController = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: tituloBoton, style: .default))
-        return alertController
+    func cryptoAnimacion(){
+        inicioAnimated.center = view.center
+        inicioAnimated.contentMode = .center
+        inicioAnimated.loopMode = .loop
+        inicioAnimated.play()
+        
     }
 }

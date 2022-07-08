@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890CF2E42877B5E100040C79 /* securecrypto.json in Resources */ = {isa = PBXBuildFile; fileRef = 890CF2E32877B5E100040C79 /* securecrypto.json */; };
+		890CF2E82877D88B00040C79 /* register.json in Resources */ = {isa = PBXBuildFile; fileRef = 890CF2E72877D88B00040C79 /* register.json */; };
 		89107E9D28693F2A00C618FE /* LogueoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89107E9C28693F2A00C618FE /* LogueoViewController.swift */; };
 		89107E9F286946FA00C618FE /* RegistroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89107E9E286946FA00C618FE /* RegistroViewController.swift */; };
 		891436732870F81300E887CC /* NoticiaCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891436722870F81300E887CC /* NoticiaCrypto.swift */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		3B63C34AC7166A9039276A3F /* Pods-CryptoData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoData.debug.xcconfig"; path = "Target Support Files/Pods-CryptoData/Pods-CryptoData.debug.xcconfig"; sourceTree = "<group>"; };
+		890CF2E32877B5E100040C79 /* securecrypto.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = securecrypto.json; sourceTree = "<group>"; };
+		890CF2E72877D88B00040C79 /* register.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = register.json; sourceTree = "<group>"; };
 		89107E9C28693F2A00C618FE /* LogueoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogueoViewController.swift; sourceTree = "<group>"; };
 		89107E9E286946FA00C618FE /* RegistroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroViewController.swift; sourceTree = "<group>"; };
 		891436722870F81300E887CC /* NoticiaCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticiaCrypto.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				898B56322874F0E2008564F4 /* MensajeAlert.swift */,
 				898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */,
 				898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */,
+				890CF2E32877B5E100040C79 /* securecrypto.json */,
+				890CF2E72877D88B00040C79 /* register.json */,
 			);
 			path = CryptoData;
 			sourceTree = "<group>";
@@ -248,10 +254,12 @@
 			files = (
 				898B563D28751A62008564F4 /* crypto_success_response.json in Resources */,
 				8962689A285BE628003DDAA9 /* LaunchScreen.storyboard in Resources */,
+				890CF2E82877D88B00040C79 /* register.json in Resources */,
 				895A73BA28692122006C79A2 /* GoogleService-Info.plist in Resources */,
 				89DF29172871175100E06CFA /* detalle_success_response.json in Resources */,
 				89626897285BE628003DDAA9 /* Assets.xcassets in Resources */,
 				89626895285BE627003DDAA9 /* Main.storyboard in Resources */,
+				890CF2E42877B5E100040C79 /* securecrypto.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

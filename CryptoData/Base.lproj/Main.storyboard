@@ -16,39 +16,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-CE-HjA" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="97" y="143" width="220" height="220"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="securecrypto"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rnJ-0G-GFG">
-                                <rect key="frame" x="16" y="104" width="382" height="140"/>
+                                <rect key="frame" x="16" y="371" width="382" height="254"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dirección de correo electrónico" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EUm-Sw-mQ5" userLabel="Direccion de correo electronico">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <edgeInsets key="layoutMargins" top="-4" left="7" bottom="1" right="8"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-hZ-JV5">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
+                                        <rect key="frame" x="0.0" y="44" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contraseña" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCJ-lK-aMG" userLabel="Direccion de correo electronico">
+                                        <rect key="frame" x="0.0" y="88" width="382" height="34"/>
+                                        <edgeInsets key="layoutMargins" top="-4" left="7" bottom="1" right="8"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O26-nE-kDn">
-                                        <rect key="frame" x="0.0" y="50" width="382" height="40"/>
+                                        <rect key="frame" x="0.0" y="132" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jvY-vx-HnT">
-                                        <rect key="frame" x="0.0" y="100" width="382" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLQ-eP-3I9">
+                                        <rect key="frame" x="0.0" y="176" width="382" height="34"/>
+                                        <color key="backgroundColor" red="0.42745098469999998" green="0.5176470876" blue="0.73725497719999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Inicio Sesión"/>
+                                        <connections>
+                                            <action selector="botonLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EdO-xy-64e"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jvY-vx-HnT">
+                                        <rect key="frame" x="0.0" y="220" width="382" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dB-EL-Tj8">
-                                                <rect key="frame" x="0.0" y="0.0" width="186" height="40"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Eres nuevo en CryptoData?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDh-Lt-nxr">
+                                                <rect key="frame" x="0.0" y="0.0" width="191.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dB-EL-Tj8">
+                                                <rect key="frame" x="190.5" y="0.0" width="191.5" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="f3M-5E-uIW"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Registro"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Registro"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Crea una cuenta"/>
                                                 <connections>
                                                     <segue destination="5MT-k4-bEt" kind="show" id="ZS5-HC-QQB"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLQ-eP-3I9">
-                                                <rect key="frame" x="196" y="0.0" width="186" height="40"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Inicio Sesión"/>
-                                                <connections>
-                                                    <action selector="botonLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EdO-xy-64e"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -59,8 +92,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="b6x-CE-HjA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="55" id="4g7-Nb-7xG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b6x-CE-HjA" secondAttribute="trailing" constant="97" id="9aG-O5-DZv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rnJ-0G-GFG" secondAttribute="trailing" constant="16" id="DWh-QR-CvY"/>
-                            <constraint firstItem="rnJ-0G-GFG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="YCQ-gm-cvM"/>
+                            <constraint firstItem="b6x-CE-HjA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="97" id="WZ0-Rx-eFx"/>
+                            <constraint firstItem="rnJ-0G-GFG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="283" id="YCQ-gm-cvM"/>
+                            <constraint firstItem="rnJ-0G-GFG" firstAttribute="top" secondItem="b6x-CE-HjA" secondAttribute="bottom" constant="8" id="iAG-fn-Pmh"/>
                             <constraint firstItem="rnJ-0G-GFG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="pHT-Ba-1AR"/>
                         </constraints>
                     </view>
@@ -68,6 +105,7 @@
                     <connections>
                         <outlet property="contraseniaLogin" destination="O26-nE-kDn" id="yGp-cW-YPR"/>
                         <outlet property="correoLogin" destination="IvV-hZ-JV5" id="go5-GK-0F6"/>
+                        <outlet property="inicioAnimated" destination="b6x-CE-HjA" id="acd-Y1-Vb3"/>
                         <outlet property="inicioSesionLogin" destination="YLQ-eP-3I9" id="8GT-Zj-vPT"/>
                         <outlet property="loginStackView" destination="rnJ-0G-GFG" id="QTt-gz-qsu"/>
                         <outlet property="registroLogin" destination="4dB-EL-Tj8" id="vZQ-q0-nbf"/>
@@ -87,25 +125,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dK7-qF-aOU">
-                                <rect key="frame" x="16" y="104" width="382" height="163"/>
+                                <rect key="frame" x="16" y="476" width="382" height="244"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dirección de correo electrónico" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="la3-NJ-E7Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo electronico" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-K7-wFc">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
+                                        <rect key="frame" x="0.0" y="27" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contraseña" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wS1-SH-Iud">
+                                        <rect key="frame" x="0.0" y="71" width="382" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5k-GT-cmi">
-                                        <rect key="frame" x="0.0" y="44" width="382" height="34"/>
+                                        <rect key="frame" x="0.0" y="98" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repita la contraseña" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mi-tD-Rvd">
+                                        <rect key="frame" x="0.0" y="142" width="382" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repita su contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-Si-cWM">
-                                        <rect key="frame" x="0.0" y="88" width="382" height="34"/>
+                                        <rect key="frame" x="0.0" y="169" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDF-GR-aWo">
-                                        <rect key="frame" x="0.0" y="132" width="382" height="31"/>
+                                        <rect key="frame" x="0.0" y="213" width="382" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Registrar usuario"/>
                                         <connections>
@@ -114,19 +170,31 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sm5-N5-XLd" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="47" y="129" width="320" height="320"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="register"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SQG-3S-4fQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dK7-qF-aOU" firstAttribute="top" secondItem="SQG-3S-4fQ" secondAttribute="top" constant="16" id="7Ra-4S-S0y"/>
+                            <constraint firstItem="Sm5-N5-XLd" firstAttribute="top" secondItem="SQG-3S-4fQ" secondAttribute="top" constant="41" id="8q6-i7-aGm"/>
+                            <constraint firstItem="dK7-qF-aOU" firstAttribute="top" secondItem="Sm5-N5-XLd" secondAttribute="bottom" constant="27" id="HWc-uf-2gU"/>
+                            <constraint firstItem="Sm5-N5-XLd" firstAttribute="leading" secondItem="SQG-3S-4fQ" secondAttribute="leading" constant="47" id="JFk-5i-CYR"/>
+                            <constraint firstItem="SQG-3S-4fQ" firstAttribute="bottom" secondItem="dK7-qF-aOU" secondAttribute="bottom" constant="142" id="VLh-Wg-sCT"/>
                             <constraint firstItem="SQG-3S-4fQ" firstAttribute="trailing" secondItem="dK7-qF-aOU" secondAttribute="trailing" constant="16" id="nl4-XE-93D"/>
                             <constraint firstItem="dK7-qF-aOU" firstAttribute="leading" secondItem="SQG-3S-4fQ" secondAttribute="leading" constant="16" id="qsG-JU-2Rh"/>
+                            <constraint firstItem="SQG-3S-4fQ" firstAttribute="trailing" secondItem="Sm5-N5-XLd" secondAttribute="trailing" constant="47" id="ycF-0w-Ok2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1Az-SW-tfW"/>
                     <connections>
                         <outlet property="contraseniaRegistro" destination="g5k-GT-cmi" id="0or-PO-NqR"/>
                         <outlet property="correoRegistro" destination="ceo-K7-wFc" id="6EV-9H-raP"/>
+                        <outlet property="registroAnimated" destination="Sm5-N5-XLd" id="89h-bC-gFV"/>
                         <outlet property="repitaContrasenia" destination="6Fh-Si-cWM" id="kZc-t1-9Sm"/>
                     </connections>
                 </viewController>
