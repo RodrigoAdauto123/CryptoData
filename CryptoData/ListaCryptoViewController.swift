@@ -33,7 +33,6 @@ class ListaCryptoViewController: UIViewController {
             userDefaults.removeObject(forKey: "email")
             userDefaults.synchronize()
             
-//            navigationController?.popViewController(animated: true)
             if let inicio = storyboard?.instantiateViewController(withIdentifier: "LogueoViewController"){
                 
                 navigationController?.pushViewController(inicio, animated: false)
