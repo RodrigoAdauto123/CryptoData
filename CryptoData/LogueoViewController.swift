@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 import Lottie
 
 class LogueoViewController: UIViewController {
@@ -56,7 +55,11 @@ class LogueoViewController: UIViewController {
     
     @IBAction func botonLogin(_ sender: Any) {
         if let email = correoLogin.text, let contrasenia = contraseniaLogin.text {
-            Auth.auth().signIn(withEmail: email, password: contrasenia) { result, error in
+            
+            let logueoRepository : LogueoRepositoryProtocol
+            logueoRepository = LogueoAuthRepository()
+            
+            logueoRepository.logueoUsuario(correo: email, contrasenia: contrasenia,completion: { result, error in
                 if let result = result, error == nil{
                     let usuario = result.user
                     self.performSegue(withIdentifier: "loginSegue", sender: usuario)
@@ -64,7 +67,7 @@ class LogueoViewController: UIViewController {
                 } else {
                     self.present(self.mensajeClass.crearMensajeAlert(titulo: "Error", mensaje: "No se puede iniciar sesión", tituloBoton: "OK"), animated: true, completion: nil)
                 }
-            }
+            })
         }
     }
     

@@ -19,6 +19,10 @@
 		891E17DC287237FA00C9D85A /* CryptoRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891E17DB287237FA00C9D85A /* CryptoRemoteRepository.swift */; };
 		893998482867AB44001B1461 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893998472867AB44001B1461 /* Crypto.swift */; };
 		8939984A2867DF0F001B1461 /* ListaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893998492867DF0F001B1461 /* ListaTableViewCell.swift */; };
+		89493C952877F2F200DEEE8F /* LogueoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89493C942877F2F200DEEE8F /* LogueoAuthRepository.swift */; };
+		89493C972877F4A500DEEE8F /* RegistroRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89493C962877F4A500DEEE8F /* RegistroRepositoryProtocol.swift */; };
+		89493C992877F51700DEEE8F /* LogueoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89493C982877F51700DEEE8F /* LogueoRepositoryProtocol.swift */; };
+		89493C9B2877F98500DEEE8F /* RegistroAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89493C9A2877F98500DEEE8F /* RegistroAuthRepository.swift */; };
 		895A73BA28692122006C79A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 895A73B928692122006C79A2 /* GoogleService-Info.plist */; };
 		8962688E285BE627003DDAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962688D285BE627003DDAA9 /* AppDelegate.swift */; };
 		89626890285BE627003DDAA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962688F285BE627003DDAA9 /* SceneDelegate.swift */; };
@@ -53,6 +57,10 @@
 		891E17DB287237FA00C9D85A /* CryptoRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoRemoteRepository.swift; sourceTree = "<group>"; };
 		893998472867AB44001B1461 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		893998492867DF0F001B1461 /* ListaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaTableViewCell.swift; sourceTree = "<group>"; };
+		89493C942877F2F200DEEE8F /* LogueoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogueoAuthRepository.swift; sourceTree = "<group>"; };
+		89493C962877F4A500DEEE8F /* RegistroRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroRepositoryProtocol.swift; sourceTree = "<group>"; };
+		89493C982877F51700DEEE8F /* LogueoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogueoRepositoryProtocol.swift; sourceTree = "<group>"; };
+		89493C9A2877F98500DEEE8F /* RegistroAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroAuthRepository.swift; sourceTree = "<group>"; };
 		895A73B928692122006C79A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8962688A285BE627003DDAA9 /* CryptoData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8962688D285BE627003DDAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +113,10 @@
 				891E17D92872347100C9D85A /* CryptoRepository.swift */,
 				891E17DB287237FA00C9D85A /* CryptoRemoteRepository.swift */,
 				898B5636287518FF008564F4 /* CryptoLocalRepository.swift */,
+				89493C982877F51700DEEE8F /* LogueoRepositoryProtocol.swift */,
+				89493C942877F2F200DEEE8F /* LogueoAuthRepository.swift */,
+				89493C962877F4A500DEEE8F /* RegistroRepositoryProtocol.swift */,
+				89493C9A2877F98500DEEE8F /* RegistroAuthRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -313,10 +325,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				891436802871112300E887CC /* DetalleResponse.swift in Sources */,
+				89493C972877F4A500DEEE8F /* RegistroRepositoryProtocol.swift in Sources */,
+				89493C952877F2F200DEEE8F /* LogueoAuthRepository.swift in Sources */,
 				8939984A2867DF0F001B1461 /* ListaTableViewCell.swift in Sources */,
+				89493C992877F51700DEEE8F /* LogueoRepositoryProtocol.swift in Sources */,
 				891E17DA2872347100C9D85A /* CryptoRepository.swift in Sources */,
 				893998482867AB44001B1461 /* Crypto.swift in Sources */,
 				898B5639287519E0008564F4 /* CryptoResponse.swift in Sources */,
+				89493C9B2877F98500DEEE8F /* RegistroAuthRepository.swift in Sources */,
 				898B56412875E2C0008564F4 /* ResultadoListaTableViewCell.swift in Sources */,
 				891E17DC287237FA00C9D85A /* CryptoRemoteRepository.swift in Sources */,
 				898B564328763C14008564F4 /* ResultadoCryptoTableViewController.swift in Sources */,
