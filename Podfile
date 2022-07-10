@@ -14,6 +14,8 @@ target 'CryptoData' do
   pod 'FirebaseAnalytics'
   pod 'Kingfisher'
   pod 'lottie-ios'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
 
 end

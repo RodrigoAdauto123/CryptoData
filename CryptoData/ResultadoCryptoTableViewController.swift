@@ -44,39 +44,5 @@ class ResultadoCryptoTableViewController: UITableViewController {
             }
         return cell
     }
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DetalleViewController") as? DetalleViewController
-        
-        guard let cryptoNoticia: NoticiaCrypto =  filtroNoticia(productosFiltrados![indexPath.row].name) else {
-            
-            self.present(alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones", tituloBoton: "OK"), animated: true, completion: nil)
-            return
-        }
-        
-        vc?.simbolo =  productosFiltrados![indexPath.row].symbol
-        vc?.image = productosFiltrados![indexPath.row].image
-        vc?.nombre =  productosFiltrados![indexPath.row].name
-        vc?.precio = String(productosFiltrados![indexPath.row].currentPrice.conversionPrecio())
-        vc?.cambioPrecio = String (format: "%.3f", productosFiltrados![indexPath.row].priceChangePercentage24h)
-        vc?.tituloNoticia = cryptoNoticia.titulo
-        vc?.detalleNoticia = cryptoNoticia.detalleNoticia
-        vc?.fechaNoticia = cryptoNoticia.fechaNoticia
-        self.navigationController?.pushViewController(vc!, animated: true)
-    }
-    
-
-    
-    func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{
-        
-        let detalle: DetalleRepository?
-        detalle = DetalleLocalRepository()
-        guard let variable = detalle?.getDetalle() else { return nil}
-        for crypto in variable.crypto{
-            if (crypto.nombre.lowercased() == nombre.lowercased()){          return crypto}
-        }
-        return nil
-    }
 
 }

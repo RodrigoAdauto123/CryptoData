@@ -130,23 +130,17 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DetalleViewController") as? DetalleViewController
-        
-        guard let cryptoNoticia: NoticiaCrypto =  filtroNoticia(cryptoList![indexPath.row].name) else {
+        let vc: DetalleViewController?
+        if tableView == self.listaCrypto{
+             
+            vc = envioDatos(listaCryptos: cryptoList, indexPath: indexPath)
+        }else{
             
-            self.present(alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones", tituloBoton: "OK"), animated: true, completion: nil)
-            return
+            vc = envioDatos(listaCryptos: resultadoCryptoTableViewController?.productosFiltrados, indexPath: indexPath)
         }
-        
-        vc?.simbolo =  cryptoList![indexPath.row].symbol
-        vc?.image = cryptoList![indexPath.row].image
-        vc?.nombre =  cryptoList![indexPath.row].name
-        vc?.precio = String(cryptoList![indexPath.row].currentPrice.conversionPrecio())
-        vc?.cambioPrecio = String (format: "%.3f", cryptoList![indexPath.row].priceChangePercentage24h)
-        vc?.tituloNoticia = cryptoNoticia.titulo
-        vc?.detalleNoticia = cryptoNoticia.detalleNoticia
-        vc?.fechaNoticia = cryptoNoticia.fechaNoticia
-        self.navigationController?.pushViewController(vc!, animated: true)
+        if let vc = vc{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
    
     func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{
@@ -192,6 +186,29 @@ extension ListaCryptoViewController: UISearchResultsUpdating, UISearchController
         }))!
       
         return filteredCrypto
+    }
+    
+    func envioDatos(listaCryptos: [Crypto]?, indexPath: IndexPath) -> DetalleViewController?{
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetalleViewController") as? DetalleViewController
+        if let listaCryptos = listaCryptos{
+            
+            guard let cryptoNoticia: NoticiaCrypto =  filtroNoticia(listaCryptos[indexPath.row].name) else {
+                
+                self.present(alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones", tituloBoton: "OK"), animated: true, completion: nil)
+                return nil
+            }
+            vc?.simbolo =  listaCryptos[indexPath.row].symbol
+            vc?.image = listaCryptos[indexPath.row].image
+            vc?.nombre =  listaCryptos[indexPath.row].name
+            vc?.precio = String(listaCryptos[indexPath.row].currentPrice)
+            vc?.precioFormateado = String(listaCryptos[indexPath.row].currentPrice.conversionPrecio())
+            vc?.cambioPrecio = String (format: "%.3f", listaCryptos[indexPath.row].priceChangePercentage24h)
+            vc?.tituloNoticia = cryptoNoticia.titulo
+            vc?.detalleNoticia = cryptoNoticia.detalleNoticia
+            vc?.fechaNoticia = cryptoNoticia.fechaNoticia
+            
+        }
+        return vc
     }
 }
 
