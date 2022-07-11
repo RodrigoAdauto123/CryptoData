@@ -39,6 +39,8 @@
 		898B563D28751A62008564F4 /* crypto_success_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 898B563C28751A62008564F4 /* crypto_success_response.json */; };
 		898B56412875E2C0008564F4 /* ResultadoListaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */; };
 		898B564328763C14008564F4 /* ResultadoCryptoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */; };
+		89AEE1DA287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1D9287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift */; };
+		89AEE1DC287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1DB287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift */; };
 		89B84EE42868125F00C619B6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B84EE32868125F00C619B6 /* Double.swift */; };
 		89DF29172871175100E06CFA /* detalle_success_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 89DF29162871175100E06CFA /* detalle_success_response.json */; };
 		89DF291F287146EE00E06CFA /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF291E287146EE00E06CFA /* DetalleViewController.swift */; };
@@ -82,6 +84,8 @@
 		898B563C28751A62008564F4 /* crypto_success_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crypto_success_response.json; sourceTree = "<group>"; };
 		898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultadoListaTableViewCell.swift; sourceTree = "<group>"; };
 		898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultadoCryptoTableViewController.swift; sourceTree = "<group>"; };
+		89AEE1D9287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialCryptoTableViewController.swift; sourceTree = "<group>"; };
+		89AEE1DB287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialCryptoTableViewCell.swift; sourceTree = "<group>"; };
 		89B84EE32868125F00C619B6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		89DF29162871175100E06CFA /* detalle_success_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detalle_success_response.json; sourceTree = "<group>"; };
 		89DF291E287146EE00E06CFA /* DetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */,
 				890CF2E32877B5E100040C79 /* securecrypto.json */,
 				890CF2E72877D88B00040C79 /* register.json */,
+				89AEE1D9287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift */,
+				89AEE1DB287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift */,
 			);
 			path = CryptoData;
 			sourceTree = "<group>";
@@ -348,6 +354,8 @@
 				8988DC35287A732900FC092E /* CryptoUsuario.swift in Sources */,
 				898B564328763C14008564F4 /* ResultadoCryptoTableViewController.swift in Sources */,
 				89B84EE42868125F00C619B6 /* Double.swift in Sources */,
+				89AEE1DA287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift in Sources */,
+				89AEE1DC287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift in Sources */,
 				8914367E2871046C00E887CC /* DetalleLocalRepository.swift in Sources */,
 				89107E9F286946FA00C618FE /* RegistroViewController.swift in Sources */,
 				89DF291F287146EE00E06CFA /* DetalleViewController.swift in Sources */,

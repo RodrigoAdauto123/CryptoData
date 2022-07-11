@@ -141,7 +141,7 @@ class DetalleViewController: UIViewController {
             return
         }
         
-        let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto,tipo: "venta")
+        let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto,tipo: "Venta")
         usuarioCrypto.element.historial?.append(detalleHistorial!)
         usuarioCrypto.element.cantidadTotalCrypto = cantidadTotalCrypto
         self.listaCrypto![usuarioCrypto.offset] = usuarioCrypto.element

@@ -8,11 +8,31 @@
 import UIKit
 import FirebaseAuth
 import Kingfisher
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class ListaCryptoViewController: UIViewController {
 
     
+    let db = Firestore.firestore()
     
+    @IBAction func HistorialCryptoButton(_ sender: Any) {
+        if let historialCrypto = storyboard?.instantiateViewController(withIdentifier: "HistorialCryptoTableViewController") as? HistorialCryptoTableViewController{
+            
+            db.collection("Usuarios").document(userDefaults.object(forKey: "email") as! String).getDocument(as: Usuario.self) { result in
+                switch result{
+                case .success(let usuario):
+                    historialCrypto.usuario = usuario
+                    self.navigationController?.pushViewController(historialCrypto, animated: true)
+                    break
+                case .failure(let error):
+                    print(error)
+                    break
+                }
+            }
+        }
+            
+    }
     @IBOutlet weak var listaCrypto: UITableView!
     var cryptoList: [Crypto]?
     var backupCryptoList: [Crypto] = []

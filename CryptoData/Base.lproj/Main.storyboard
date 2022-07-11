@@ -296,7 +296,11 @@
                                     <action selector="cerrarSesionBarButton:" destination="0HY-Ei-0jo" id="0PY-lf-JDY"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="server.rack" catalog="system" id="Rwz-Rd-9yS"/>
+                            <barButtonItem title="Historial" image="server.rack" catalog="system" id="Rwz-Rd-9yS">
+                                <connections>
+                                    <action selector="HistorialCryptoButton:" destination="0HY-Ei-0jo" id="kCK-5L-46x"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -475,22 +479,75 @@
             </objects>
             <point key="canvasLocation" x="3066.666666666667" y="59.598214285714285"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Historial Crypto Table View Controller-->
         <scene sceneID="MOr-Ut-56v">
             <objects>
-                <tableViewController id="uLe-le-09w" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="m3t-Y1-jRW">
+                <tableViewController storyboardIdentifier="HistorialCryptoTableViewController" id="uLe-le-09w" customClass="HistorialCryptoTableViewController" customModule="CryptoData" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="24" estimatedSectionHeaderHeight="-1" sectionFooterHeight="19" estimatedSectionFooterHeight="-1" id="m3t-Y1-jRW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" red="0.24313727020000001" green="0.51372551919999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="26O-UM-1y1">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historialCryptoCell" id="26O-UM-1y1" customClass="HistorialCryptoTableViewCell" customModule="CryptoData" customModuleProvider="target">
+                                <rect key="frame" x="20" y="49.5" width="374" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="26O-UM-1y1" id="cpJ-zC-5Hq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Precio:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yL-xX-H6A">
+                                            <rect key="frame" x="20" y="26" width="116" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cantidad:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctm-Qb-rbk">
+                                            <rect key="frame" x="20" y="11" width="99.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqF-B2-rx7">
+                                            <rect key="frame" x="289" y="11" width="90" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0x4-lT-fyX">
+                                            <rect key="frame" x="289" y="26" width="90" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpg-CN-zwL">
+                                            <rect key="frame" x="158" y="0.0" width="58" height="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Rpg-CN-zwL" firstAttribute="top" secondItem="cpJ-zC-5Hq" secondAttribute="topMargin" constant="-11" id="3eC-Ec-LXq"/>
+                                        <constraint firstItem="0x4-lT-fyX" firstAttribute="top" secondItem="cpJ-zC-5Hq" secondAttribute="topMargin" constant="15" id="6hj-rj-fvu"/>
+                                        <constraint firstItem="Rpg-CN-zwL" firstAttribute="leading" secondItem="ctm-Qb-rbk" secondAttribute="trailing" constant="38.5" id="86d-0u-cox"/>
+                                        <constraint firstItem="BqF-B2-rx7" firstAttribute="top" secondItem="cpJ-zC-5Hq" secondAttribute="topMargin" id="Alz-sD-eUB"/>
+                                        <constraint firstItem="BqF-B2-rx7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0x4-lT-fyX" secondAttribute="leading" id="KrR-OY-GKA"/>
+                                        <constraint firstItem="BqF-B2-rx7" firstAttribute="baseline" secondItem="ctm-Qb-rbk" secondAttribute="baseline" id="NzN-Af-Dv2"/>
+                                        <constraint firstItem="0x4-lT-fyX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5yL-xX-H6A" secondAttribute="trailing" constant="8" symbolic="YES" id="VWk-Gt-UVu"/>
+                                        <constraint firstItem="ctm-Qb-rbk" firstAttribute="leading" secondItem="5yL-xX-H6A" secondAttribute="leading" id="cdJ-E0-0tl"/>
+                                        <constraint firstItem="Rpg-CN-zwL" firstAttribute="centerX" secondItem="cpJ-zC-5Hq" secondAttribute="centerX" id="d5b-V2-Cli"/>
+                                        <constraint firstAttribute="trailing" secondItem="0x4-lT-fyX" secondAttribute="trailing" constant="-5" id="gAA-lx-u0J"/>
+                                        <constraint firstItem="0x4-lT-fyX" firstAttribute="baseline" secondItem="5yL-xX-H6A" secondAttribute="baseline" id="i2x-x0-CQm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="BqF-B2-rx7" secondAttribute="trailing" constant="-25" id="sfc-mt-rvd"/>
+                                        <constraint firstItem="ctm-Qb-rbk" firstAttribute="leading" secondItem="cpJ-zC-5Hq" secondAttribute="leadingMargin" id="wlP-bX-VI1"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cantidadCryptoHistorial" destination="BqF-B2-rx7" id="MxH-R3-c7Q"/>
+                                    <outlet property="precioCryptoHistorial" destination="0x4-lT-fyX" id="oor-26-Ndd"/>
+                                    <outlet property="tipoCompraHistorial" destination="Rpg-CN-zwL" id="iyo-IW-SUX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -501,7 +558,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ct-cJ-aWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3862" y="60"/>
+            <point key="canvasLocation" x="3860.8695652173915" y="59.598214285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cJv-4A-6nD">
@@ -531,14 +588,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellResultado" id="xKW-mN-aon" customClass="ResultadoListaTableViewCell" customModule="CryptoData" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="41"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="40.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xKW-mN-aon" id="hgE-Ka-SWc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="porcentaje" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-gf-mOe" userLabel="El">
-                                            <rect key="frame" x="338" y="22.5" width="69" height="17"/>
+                                            <rect key="frame" x="338" y="22" width="69" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.1110673482" green="0.55239207469999996" blue="0.060712192999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
@@ -560,7 +617,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="precio" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmG-DH-rDH">
-                                            <rect key="frame" x="357" y="-2" width="49" height="20.5"/>
+                                            <rect key="frame" x="357" y="-2" width="49" height="20"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
