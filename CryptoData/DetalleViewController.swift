@@ -27,6 +27,7 @@ class DetalleViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     let db = Firestore.firestore()
     var listaCrypto: [CryptoUsuario]? = []
+    let mensajeClass = MensajeAlert()
     
     var simbolo: String?
     var nombre: String?
@@ -38,8 +39,10 @@ class DetalleViewController: UIViewController {
     var fechaNoticia: String?
     var correo: String = ""
     var precioFormateado: String?
+    var saldo: Double?
+    var usuarioCrypto: CryptoUsuario?
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +69,8 @@ class DetalleViewController: UIViewController {
             switch result{
             case .success(let usuario):
                 self.listaCrypto = usuario.listaCrypto
-                self.saldoCrypto.text = String(usuario.saldo)
+                self.saldoCrypto.text = usuario.saldo.conversionPrecio()
+                self.saldo = usuario.saldo
                 break
             case .failure(let error):
                 print(error)
@@ -78,53 +82,87 @@ class DetalleViewController: UIViewController {
     
     @IBAction func compraCryptoAction(_ sender: Any) {
         
-        guard let saldoActual = Double(self.saldoCrypto.text!), let precioCrypto = Double(precio!) else {
-            print("ERROR")
+        guard let saldoActual = self.saldo, let precioCrypto = Double(precio!) else {
             return }
         
         let saldoRestante = saldoActual - precioCrypto
-        if var listaCrypto = listaCrypto, !listaCrypto.isEmpty{
-            var mismaMoneda = false
-            for var (index,crypto) in listaCrypto.enumerated(){
-                if crypto.nombre == nombreCrypto.text{
-                    let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto)
-                    crypto.historial?.append(detalleHistorial!)
-                    listaCrypto[index] = crypto
-                    mismaMoneda = true
-                    break
+        let permisoCompra = saldoRestante < 0
+        switch permisoCompra{
+            case true:
+                self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "No tiene saldo para hacer esta compra", tituloBoton: "OK"), animated: true, completion: nil)
+                break
+                
+            case false:
+                if var listaCrypto = listaCrypto, !listaCrypto.isEmpty{
+                    var mismaMoneda = false
+                    for var (index,crypto) in listaCrypto.enumerated(){
+                        if crypto.nombre == nombreCrypto.text{
+                            let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto,tipo: "Compra")
+                            crypto.historial?.append(detalleHistorial!)
+                            crypto.cantidadTotalCrypto += 1
+                            listaCrypto[index] = crypto
+                            mismaMoneda = true
+                            break
+                        }
+                    }
+                    switch mismaMoneda{
+                        
+                        case true:
+                            self.listaCrypto = listaCrypto
+                            break
+                        case false:
+                            crearTransaccion(cantidad: 1, precio: precioCrypto, tipo: "Compra")
+                            break
+                    }
+                }else {
+                    crearTransaccion(cantidad: 1, precio: precioCrypto, tipo: "Compra")
                 }
-            }
             
-            if mismaMoneda{
-                self.listaCrypto = listaCrypto
-            }else {
-                let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto)
-                var historial: [DetalleHistorialUsuario]? = []
-                    historial?.append(detalleHistorial!)
-                let cryptousuario: CryptoUsuario? = CryptoUsuario(nombre: nombreCrypto.text!, historial: historial)
-                self.listaCrypto?.append(cryptousuario!)
-            }
-            
-            
-        }else {
-
-            let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto)
-            var historial: [DetalleHistorialUsuario]? = []
-                historial?.append(detalleHistorial!)
-            let cryptousuario: CryptoUsuario? = CryptoUsuario(nombre: nombreCrypto.text!, historial: historial)
-            
-            listaCrypto?.append(cryptousuario!)
+                let usuario = Usuario(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
+                do{
+                   try db.collection("Usuarios").document(correo).setData(from: usuario)
+                } catch let error{
+                    print("Error", error)
+                }
+            self.viewWillAppear(true)
+                break
         }
+    }
+    
+    @IBAction func ventaCryptoAction(_ sender: Any) {
+        
+        guard var usuarioCrypto = self.listaCrypto!.enumerated().first(where: {$0.element.nombre == self.nombreCrypto.text}) else {
+            self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "No tiene esta cryptomoneda", tituloBoton: "OK"), animated: true, completion: nil)
+            return}
+        let cantidadTotalCrypto = usuarioCrypto.element.cantidadTotalCrypto - 1
+        guard let _ =  usuarioCrypto.element.historial, let precioCrypto = Double(precio!), let saldo = self.saldo, cantidadTotalCrypto >= 0 else{
+            
+            self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "No tiene esta cryptomoneda", tituloBoton: "OK"), animated: true, completion: nil)
+            return
+        }
+        
+        let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto,tipo: "venta")
+        usuarioCrypto.element.historial?.append(detalleHistorial!)
+        usuarioCrypto.element.cantidadTotalCrypto = cantidadTotalCrypto
+        self.listaCrypto![usuarioCrypto.offset] = usuarioCrypto.element
+        let saldoRestante  = saldo + precioCrypto
+        
         let usuario = Usuario(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
         do{
            try db.collection("Usuarios").document(correo).setData(from: usuario)
         } catch let error{
             print("Error", error)
         }
+        self.viewWillAppear(true)
         
     }
     
-    @IBAction func ventaCryptoAction(_ sender: Any) {
+    func crearTransaccion(cantidad: Double, precio: Double, tipo: String){
         
+        let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: cantidad, precio: precio,tipo: tipo)
+        var historial: [DetalleHistorialUsuario]? = []
+            historial?.append(detalleHistorial!)
+        let cryptousuario: CryptoUsuario? = CryptoUsuario(nombre: nombreCrypto.text!, historial: historial,cantidadTotalCrypto: cantidad)
+        self.listaCrypto?.append(cryptousuario!)
     }
 }

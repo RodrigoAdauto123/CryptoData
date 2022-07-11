@@ -10,4 +10,5 @@ import Foundation
 struct DetalleHistorialUsuario: Codable{
     var cantidad: Double
     var precio: Double
+    var tipo: String
 }

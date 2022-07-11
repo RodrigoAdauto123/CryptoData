@@ -10,4 +10,5 @@ import Foundation
 struct CryptoUsuario: Codable{
     var nombre: String
     var historial: [DetalleHistorialUsuario]?
+    var cantidadTotalCrypto: Double
 }
