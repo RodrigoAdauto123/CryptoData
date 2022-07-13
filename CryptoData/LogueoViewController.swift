@@ -10,6 +10,7 @@ import Lottie
 
 class LogueoViewController: UIViewController {
 
+    
     @IBOutlet weak var inicioAnimated: AnimationView!
     @IBOutlet weak var loginStackView: UIStackView!
     @IBOutlet weak var contraseniaLogin: UITextField!
@@ -24,6 +25,11 @@ class LogueoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "CryptoData"
+        
+        //Nombre del backbutton
+        let backBarBtnItem = UIBarButtonItem()
+            backBarBtnItem.title = "Ingreso"
+            navigationItem.backBarButtonItem = backBarBtnItem
         
         navigationItem.setHidesBackButton(true, animated: false)
         if let _ = userDefaults.object(forKey: "email"){
@@ -54,7 +60,7 @@ class LogueoViewController: UIViewController {
     }
     
     @IBAction func botonLogin(_ sender: Any) {
-        if let email = correoLogin.text, let contrasenia = contraseniaLogin.text {
+        if let email = correoLogin.text, let contrasenia = contraseniaLogin.text, !correoLogin.text!.isEmpty && !contraseniaLogin.text!.isEmpty{
             
             let logueoRepository : LogueoRepositoryProtocol
             logueoRepository = LogueoAuthRepository()
@@ -62,12 +68,14 @@ class LogueoViewController: UIViewController {
             logueoRepository.logueoUsuario(correo: email, contrasenia: contrasenia,completion: { result, error in
                 if let result = result, error == nil{
                     let usuario = result.user
-                    self.performSegue(withIdentifier: "loginSegue", sender: usuario)
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
                       
                 } else {
-                    self.present(self.mensajeClass.crearMensajeAlert(titulo: "Error", mensaje: "No se puede iniciar sesión", tituloBoton: "OK"), animated: true, completion: nil)
+                    self.present(self.mensajeClass.crearMensajeAlert(titulo: "Error", mensaje: "Correo y/o contraseña incorrectas", tituloBoton: "OK"), animated: true, completion: nil)
                 }
             })
+        }else {
+            self.present(self.mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "Querido CryptoUsuario para ingresar necesita colocar un usuario y contraseña", tituloBoton: "OK"), animated: true, completion: nil)
         }
     }
     

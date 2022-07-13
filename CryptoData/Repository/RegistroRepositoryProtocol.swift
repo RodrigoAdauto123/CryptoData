@@ -11,3 +11,7 @@ import FirebaseAuth
 protocol RegistroRepositoryProtocol{
     func registroUsuario(correo: String,contrasenia: String ,completion: @escaping (AuthDataResult?,Error?) -> Void)
 }
+
+protocol RegistroDbRepositoryProtocol{
+    func registroUsuarioDb(correo: String)
+}

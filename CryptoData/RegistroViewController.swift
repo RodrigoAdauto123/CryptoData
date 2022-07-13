@@ -8,8 +8,6 @@
 import UIKit
 import FirebaseAuth
 import Lottie
-import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 class RegistroViewController: UIViewController {
 
@@ -19,7 +17,6 @@ class RegistroViewController: UIViewController {
     @IBOutlet weak var correoRegistro: UITextField!
     private let saldoInicial : Double = 5000.0
     let alertaClass = MensajeAlert()
-    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Registro de usuario"
@@ -29,21 +26,23 @@ class RegistroViewController: UIViewController {
     
     @IBAction func registroUsuarioAction(_ sender: Any) {
         view.endEditing(true)
-        if let correo = correoRegistro.text, let contrasenia = contraseniaRegistro.text, let repitaContrasenia = repitaContrasenia.text, contrasenia.elementsEqual(repitaContrasenia) {
+        if let correo = correoRegistro.text, let contrasenia = contraseniaRegistro.text, let repitaContrasenia = repitaContrasenia.text, contrasenia == repitaContrasenia && !contrasenia.isEmpty && !correo.isEmpty{
              
             let registroUsuario: RegistroRepositoryProtocol
             registroUsuario = RegistroAuthRepository()
+            let registroDb: RegistroDbRepositoryProtocol
+            registroDb = RegistroDbRepository()
             
             registroUsuario.registroUsuario(correo: correo, contrasenia: contrasenia) { result, error in
                 if let _ = result, error == nil{
-                    
-                    let listaCrypto: [CryptoUsuario] = []
-                    self.db.collection("Usuarios").document(correo).setData(["correo" : correo, "listaCrypto": listaCrypto, "saldo": self.saldoInicial ])
+                    registroDb.registroUsuarioDb(correo: correo)
                     self.navigationController?.popViewController(animated: true)
                 }else {
                     self.present(self.alertaClass.crearMensajeAlert(titulo: "Error en registro de usuario", mensaje: "Hubo un problema al registrar el usuario, revise que el correo ya no se encuentra en uso", tituloBoton: "OK"), animated: true, completion: nil)
                 }
             }            
+        }else {
+            self.present(self.alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: "Querido CryptoUsuario para registrarse necesita colocar un usuario y contraseña", tituloBoton: "OK"), animated: true, completion: nil)
         }
     }
     func cryptoAnimacion(){

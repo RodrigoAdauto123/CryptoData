@@ -70,7 +70,7 @@ class ListaCryptoViewController: UIViewController {
         
         navigationItem.setHidesBackButton(true, animated: false)
         
-        // Configurarndo el UISearchController
+        // MARK: Configurarndo el UISearchController
         resultadoCryptoTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultadoCryptoTableViewController") as? ResultadoCryptoTableViewController
         
         resultadoCryptoTableViewController?.tableView.delegate = self
@@ -80,6 +80,7 @@ class ListaCryptoViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Ingrese el nombre de la cryptomoneda"
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -148,6 +149,7 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     
+    // MARK: Configuracion TableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc: DetalleViewController?
@@ -189,7 +191,7 @@ extension ListaCryptoViewController:UISearchBarDelegate{
 extension ListaCryptoViewController: UISearchResultsUpdating, UISearchControllerDelegate{
     
     
-        func updateSearchResults(for searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
             
             filteredCrypto =  filterContentForSearchText(searchController.searchBar.text!)
             
