@@ -7,12 +7,13 @@
 
 import UIKit
 import Kingfisher
-import FirebaseFirestore
 
 class DetalleViewController: UIViewController {
 
     
     
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    @IBOutlet var detalleView: UIView!
     @IBOutlet weak var saldoCrypto: UILabel!
     
     @IBOutlet weak var imageDetalleCrypto: UIImageView!
@@ -25,7 +26,6 @@ class DetalleViewController: UIViewController {
     @IBOutlet weak var precioCrypto: UILabel!
     
     let userDefaults = UserDefaults.standard
-    let db = Firestore.firestore()
     var listaCrypto: [CryptoUsuario]? = []
     let mensajeClass = MensajeAlert()
     
@@ -46,6 +46,8 @@ class DetalleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // MARK: Muestra nombre, precio, imagen y noticia de la cryptomoneda
+        indicatorView.startAnimating()
         
         if let simbolo = simbolo, let nombre = nombre, let _ = image, let precioFormateado = precioFormateado, let cambioPrecio = cambioPrecio, let tituloNoticia = tituloNoticia, let detalleNoticia = detalleNoticia, let fechaNoticia = fechaNoticia{
             nombreCrypto.text = "\(nombre) (\(simbolo.uppercased()))"
@@ -60,24 +62,28 @@ class DetalleViewController: UIViewController {
             tituloNoticiaCrypto.text = tituloNoticia
             detalleNoticiaCrypto.text = detalleNoticia
             fechaNoticiaCrypto.text = fechaNoticia
-        }     
+        }
+        
     }
  
     override func viewWillAppear(_ animated: Bool) {
+        // MARK: Mostrar y actualizar el saldo del CryptoUsuario
        correo = userDefaults.object(forKey: "email") as! String
-        db.collection("Usuarios").document(correo).getDocument(as: Usuario.self) { result in
+        let getUsuario: GetUsuarioDBRepositoryProtocol
+        getUsuario = UsuarioDbRepository()
+        getUsuario.getUsuario(correo: correo) { result in
             switch result{
             case .success(let usuario):
                 self.listaCrypto = usuario.listaCrypto
                 self.saldoCrypto.text = usuario.saldo.conversionPrecio()
                 self.saldo = usuario.saldo
+                self.indicatorView.stopAnimating()
                 break
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self.present(self.mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "Hubo problemas para mostrar su saldo actual. Intente de nuevo", tituloBoton: "OK"), animated: true, completion: nil)
                 break
             }
         }
-        
     }
     
     @IBAction func compraCryptoAction(_ sender: Any) {
@@ -87,6 +93,7 @@ class DetalleViewController: UIViewController {
         
         let saldoRestante = saldoActual - precioCrypto
         let permisoCompra = saldoRestante < 0
+        let actualizarUsuarioDb: RegistroDbRepositoryProtocol
         switch permisoCompra{
             case true:
                 self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "No tiene saldo para hacer esta compra", tituloBoton: "OK"), animated: true, completion: nil)
@@ -118,18 +125,15 @@ class DetalleViewController: UIViewController {
                     crearTransaccion(cantidad: 1, precio: precioCrypto, tipo: "Compra")
                 }
             
-                let usuario = Usuario(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
-                do{
-                   try db.collection("Usuarios").document(correo).setData(from: usuario)
-                } catch let error{
-                    print("Error", error)
-                }
+            actualizarUsuarioDb = RegistroDbRepository()
+            actualizarUsuarioDb.registroUsuarioDb(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
             self.viewWillAppear(true)
                 break
         }
     }
     
     @IBAction func ventaCryptoAction(_ sender: Any) {
+        let actualizarUsuarioDb: RegistroDbRepositoryProtocol
         
         guard var usuarioCrypto = self.listaCrypto!.enumerated().first(where: {$0.element.nombre == self.nombreCrypto.text}) else {
             self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "No tiene esta cryptomoneda", tituloBoton: "OK"), animated: true, completion: nil)
@@ -147,12 +151,8 @@ class DetalleViewController: UIViewController {
         self.listaCrypto![usuarioCrypto.offset] = usuarioCrypto.element
         let saldoRestante  = saldo + precioCrypto
         
-        let usuario = Usuario(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
-        do{
-           try db.collection("Usuarios").document(correo).setData(from: usuario)
-        } catch let error{
-            print("Error", error)
-        }
+        actualizarUsuarioDb = RegistroDbRepository()
+        actualizarUsuarioDb.registroUsuarioDb(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
         self.viewWillAppear(true)
         
     }

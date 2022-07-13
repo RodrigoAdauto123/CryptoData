@@ -5,12 +5,11 @@ import Foundation
 class DetalleLocalRepository: DetalleRepository{
     
     func getDetalle() -> DetalleResponse? {
-        guard let data = loadData("detalle_success_response") else {
-            fatalError("No se cargaron los archivos")
+        if let data = loadData("detalle_success_response") {
+            let decoder = JSONDecoder()
+            return try! decoder.decode(DetalleResponse.self, from: data)
         }
-        
-        let decoder = JSONDecoder()
-        return try! decoder.decode(DetalleResponse.self, from: data)
+        return nil
     }
     
     func loadData(_ nombre: String) -> Data?{

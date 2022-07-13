@@ -14,9 +14,5 @@ class RegistroAuthRepository: RegistroRepositoryProtocol{
         Auth.auth().createUser(withEmail: correo, password: contrasenia) { (result,error) in
             completion(result,error)
         }
-        
     }
-    
-    
-    
 }

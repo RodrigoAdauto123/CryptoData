@@ -11,12 +11,15 @@ import FirebaseFirestoreSwift
 
 class RegistroDbRepository: RegistroDbRepositoryProtocol{
     let db = Firestore.firestore()
-    let listaCrypto: [CryptoUsuario] = []
-    private let saldoInicial : Double = 5000.0
     
-    func registroUsuarioDb(correo: String) {
-        self.db.collection("Usuarios").document(correo).setData(["correo" : correo, "listaCrypto": listaCrypto, "saldo": self.saldoInicial ])
-    }
-    
-    
+    func registroUsuarioDb(correo: String, listaCrypto: [CryptoUsuario]?, saldo: Double ) -> Error? {
+        
+        let usuario = Usuario(correo: correo, listaCrypto: listaCrypto, saldo: saldo)
+        do{
+           try db.collection("Usuarios").document(correo).setData(from: usuario)
+           return nil
+        } catch let error{
+            return error
+        }
+    }  
 }

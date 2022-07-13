@@ -135,7 +135,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo electronico" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-K7-wFc">
                                         <rect key="frame" x="0.0" y="27" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contraseña" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wS1-SH-Iud">
                                         <rect key="frame" x="0.0" y="71" width="382" height="17"/>
@@ -425,6 +425,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="1ya-KW-lxq">
+                                <rect key="frame" x="184" y="242" width="58" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.24313727020000001" green="0.51372551919999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i8O-YW-LI5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -468,8 +473,10 @@
                     <connections>
                         <outlet property="cambioPrecioCrypto" destination="szQ-H9-xdU" id="IYU-1w-pZh"/>
                         <outlet property="detalleNoticiaCrypto" destination="xLj-ZK-jrh" id="vCt-q2-f5g"/>
+                        <outlet property="detalleView" destination="X5R-PH-xbx" id="c8j-3L-UcT"/>
                         <outlet property="fechaNoticiaCrypto" destination="0fI-Ns-gqZ" id="fFE-DU-GHT"/>
                         <outlet property="imageDetalleCrypto" destination="7Xz-W1-0ma" id="QBq-MV-sbx"/>
+                        <outlet property="indicatorView" destination="1ya-KW-lxq" id="Vyo-nT-SUp"/>
                         <outlet property="nombreCrypto" destination="R3W-Dz-dSZ" id="gLc-nC-NLW"/>
                         <outlet property="precioCrypto" destination="8Hz-bO-wyn" id="3xp-Y6-afD"/>
                         <outlet property="saldoCrypto" destination="4ld-hY-vHv" id="2md-u9-lal"/>

@@ -8,31 +8,9 @@
 import UIKit
 import FirebaseAuth
 import Kingfisher
-import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 class ListaCryptoViewController: UIViewController {
 
-    
-    let db = Firestore.firestore()
-    
-    @IBAction func HistorialCryptoButton(_ sender: Any) {
-        if let historialCrypto = storyboard?.instantiateViewController(withIdentifier: "HistorialCryptoTableViewController") as? HistorialCryptoTableViewController{
-            
-            db.collection("Usuarios").document(userDefaults.object(forKey: "email") as! String).getDocument(as: Usuario.self) { result in
-                switch result{
-                case .success(let usuario):
-                    historialCrypto.usuario = usuario
-                    self.navigationController?.pushViewController(historialCrypto, animated: true)
-                    break
-                case .failure(let error):
-                    print(error)
-                    break
-                }
-            }
-        }
-            
-    }
     @IBOutlet weak var listaCrypto: UITableView!
     var cryptoList: [Crypto]?
     var backupCryptoList: [Crypto] = []
@@ -59,18 +37,20 @@ class ListaCryptoViewController: UIViewController {
             }
             
         } catch {
-            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error", tituloBoton: "Intentare de nuevo"), animated: true)
+            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error al cerrar sesion", tituloBoton: "Intentare de nuevo"), animated: true)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Cryptomonedas"
-        
-        
         navigationItem.setHidesBackButton(true, animated: false)
         
-        // MARK: Configurarndo el UISearchController
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.startAnimating()
+        self.listaCrypto.backgroundView = spinner
+        
+        // MARK: Configurando el UISearchController
         resultadoCryptoTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultadoCryptoTableViewController") as? ResultadoCryptoTableViewController
         
         resultadoCryptoTableViewController?.tableView.delegate = self
@@ -96,13 +76,30 @@ class ListaCryptoViewController: UIViewController {
         }
         
     }
+    @IBAction func HistorialCryptoButton(_ sender: Any) {
+        let getUsuario: GetUsuarioDBRepositoryProtocol
+        if let historialCrypto = storyboard?.instantiateViewController(withIdentifier: "HistorialCryptoTableViewController") as? HistorialCryptoTableViewController{
+            
+            getUsuario = UsuarioDbRepository()
+            getUsuario.getUsuario(correo: userDefaults.object(forKey: "email") as! String) { result in
+                switch result{
+                case .success(let usuario):
+                    historialCrypto.usuario = usuario
+                    self.navigationController?.pushViewController(historialCrypto, animated: true)
+                    break
+                case .failure(_):
+                    self.present(self.alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: "No se pudo acceder al historial de compra y venta. Intente de nuevo", tituloBoton: "OK"), animated: true, completion: nil)
+                    break
+                }
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Cada vez que regresa hacia atras, se actualiza la lista de cryptomonedas
+        // MARK: Se actualiza la lista de cryptomonedas
         if animated == true{
             self.listaCrypto.reloadData()
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,7 +146,6 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     
-    // MARK: Configuracion TableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc: DetalleViewController?
@@ -165,30 +161,9 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
         }
     }
    
-    func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{
-        
-        let detalle: DetalleRepository?
-        detalle = DetalleLocalRepository()
-        guard let variable = detalle?.getDetalle() else { return nil}
-        for crypto in variable.crypto{
-            if (crypto.nombre.lowercased() == nombre.lowercased()){
-                return crypto
-            }
-        }
-        return nil
-    }
-}
-extension ListaCryptoViewController:UISearchBarDelegate{
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        updateSearchResults(for: searchController)
-    }
 }
 
-extension ListaCryptoViewController: UISearchResultsUpdating, UISearchControllerDelegate{
+extension ListaCryptoViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate{
     
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -208,6 +183,31 @@ extension ListaCryptoViewController: UISearchResultsUpdating, UISearchController
         }))!
       
         return filteredCrypto
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        updateSearchResults(for: searchController)
+    }
+    
+    
+}
+extension ListaCryptoViewController{
+    
+    func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{
+        
+        let detalle: DetalleRepository?
+        detalle = DetalleLocalRepository()
+        guard let variable = detalle?.getDetalle() else { return nil}
+        for crypto in variable.crypto{
+            if (crypto.nombre.lowercased() == nombre.lowercased()){
+                return crypto
+            }
+        }
+        return nil
     }
     
     func envioDatos(listaCryptos: [Crypto]?, indexPath: IndexPath) -> DetalleViewController?{
@@ -233,4 +233,3 @@ extension ListaCryptoViewController: UISearchResultsUpdating, UISearchController
         return vc
     }
 }
-

@@ -40,6 +40,7 @@
 		898B564328763C14008564F4 /* ResultadoCryptoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */; };
 		89A6AEE8287E37550096B2DE /* RegistroDbRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A6AEE7287E37550096B2DE /* RegistroDbRepository.swift */; };
 		89A6AEEA287E43340096B2DE /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A6AEE9287E43340096B2DE /* Constantes.swift */; };
+		89A6AEEC287F6A6F0096B2DE /* UsuarioDbRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A6AEEB287F6A6F0096B2DE /* UsuarioDbRepository.swift */; };
 		89AEE1DA287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1D9287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift */; };
 		89AEE1DC287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1DB287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift */; };
 		89B84EE42868125F00C619B6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B84EE32868125F00C619B6 /* Double.swift */; };
@@ -86,6 +87,7 @@
 		898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultadoCryptoTableViewController.swift; sourceTree = "<group>"; };
 		89A6AEE7287E37550096B2DE /* RegistroDbRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroDbRepository.swift; sourceTree = "<group>"; };
 		89A6AEE9287E43340096B2DE /* Constantes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constantes.swift; sourceTree = "<group>"; };
+		89A6AEEB287F6A6F0096B2DE /* UsuarioDbRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioDbRepository.swift; sourceTree = "<group>"; };
 		89AEE1D9287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialCryptoTableViewController.swift; sourceTree = "<group>"; };
 		89AEE1DB287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialCryptoTableViewCell.swift; sourceTree = "<group>"; };
 		89B84EE32868125F00C619B6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				89493C962877F4A500DEEE8F /* RegistroRepositoryProtocol.swift */,
 				89493C9A2877F98500DEEE8F /* RegistroAuthRepository.swift */,
 				89A6AEE7287E37550096B2DE /* RegistroDbRepository.swift */,
+				89A6AEEB287F6A6F0096B2DE /* UsuarioDbRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -167,8 +170,8 @@
 				89E46D97286622AA007199FD /* ListaCryptoViewController.swift */,
 				893998492867DF0F001B1461 /* ListaTableViewCell.swift */,
 				89DF291E287146EE00E06CFA /* DetalleViewController.swift */,
-				898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */,
 				898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */,
+				898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */,
 				89AEE1D9287CB9FC0070D3EA /* HistorialCryptoTableViewController.swift */,
 				89AEE1DB287CCDCD0070D3EA /* HistorialCryptoTableViewCell.swift */,
 				89626893285BE627003DDAA9 /* Main.storyboard */,
@@ -352,6 +355,7 @@
 			files = (
 				8988DC33287A729000FC092E /* Usuario.swift in Sources */,
 				891436802871112300E887CC /* DetalleResponse.swift in Sources */,
+				89A6AEEC287F6A6F0096B2DE /* UsuarioDbRepository.swift in Sources */,
 				89A6AEEA287E43340096B2DE /* Constantes.swift in Sources */,
 				89493C972877F4A500DEEE8F /* RegistroRepositoryProtocol.swift in Sources */,
 				89493C952877F2F200DEEE8F /* LogueoAuthRepository.swift in Sources */,

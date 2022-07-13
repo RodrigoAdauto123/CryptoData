@@ -13,5 +13,9 @@ protocol RegistroRepositoryProtocol{
 }
 
 protocol RegistroDbRepositoryProtocol{
-    func registroUsuarioDb(correo: String)
+    func registroUsuarioDb(correo: String, listaCrypto: [CryptoUsuario]?, saldo: Double) -> Error?
+}
+
+protocol GetUsuarioDBRepositoryProtocol{
+    func getUsuario(correo: String, completion: @escaping (Result<Usuario, Error>) -> Void)
 }

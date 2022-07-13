@@ -35,10 +35,14 @@ class RegistroViewController: UIViewController {
             
             registroUsuario.registroUsuario(correo: correo, contrasenia: contrasenia) { result, error in
                 if let _ = result, error == nil{
-                    registroDb.registroUsuarioDb(correo: correo)
-                    self.navigationController?.popViewController(animated: true)
+                    if let _ = registroDb.registroUsuarioDb(correo: correo,listaCrypto: [],saldo: self.saldoInicial){
+                        self.present(self.alertaClass.crearMensajeAlert(titulo: "Error en registro de usuario", mensaje: "Actualmente tenemos problemas con nuestro servicio de logueo. Intente de nuevo", tituloBoton: "OK"), animated: true, completion: nil)
+                    }else{
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
                 }else {
-                    self.present(self.alertaClass.crearMensajeAlert(titulo: "Error en registro de usuario", mensaje: "Hubo un problema al registrar el usuario, revise que el correo ya no se encuentra en uso", tituloBoton: "OK"), animated: true, completion: nil)
+                    self.present(self.alertaClass.crearMensajeAlert(titulo: "Error en registro de usuario", mensaje: "Hubo un problema al registrar el usuario, revise que el correo no se encuentre en uso", tituloBoton: "OK"), animated: true, completion: nil)
                 }
             }            
         }else {

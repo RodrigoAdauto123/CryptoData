@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import FirebaseFirestore
-import FirebaseFirestoreSwift
-import Kingfisher
 
 class HistorialCryptoTableViewController: UITableViewController {
 
@@ -21,7 +18,7 @@ class HistorialCryptoTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         guard let cantidadSecciones = usuario?.listaCrypto?.count else {return 0}
         
         

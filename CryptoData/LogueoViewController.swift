@@ -26,28 +26,19 @@ class LogueoViewController: UIViewController {
         super.viewDidLoad()
         title = "CryptoData"
         
-        //Nombre del backbutton
+        //MARK: Configurando nombre del backbutton
         let backBarBtnItem = UIBarButtonItem()
             backBarBtnItem.title = "Ingreso"
             navigationItem.backBarButtonItem = backBarBtnItem
         
         navigationItem.setHidesBackButton(true, animated: false)
         if let _ = userDefaults.object(forKey: "email"){
+            loginStackView.isHidden = true
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }else {
             cryptoAnimacion()
         }
         
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        correoLogin.text = ""
-        contraseniaLogin.text = ""
-        if let _ = userDefaults.object(forKey: "email"){
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
-        }else {
-            cryptoAnimacion()
-            
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,12 +53,11 @@ class LogueoViewController: UIViewController {
     @IBAction func botonLogin(_ sender: Any) {
         if let email = correoLogin.text, let contrasenia = contraseniaLogin.text, !correoLogin.text!.isEmpty && !contraseniaLogin.text!.isEmpty{
             
-            let logueoRepository : LogueoRepositoryProtocol
+            let logueoRepository: LogueoRepositoryProtocol
             logueoRepository = LogueoAuthRepository()
             
             logueoRepository.logueoUsuario(correo: email, contrasenia: contrasenia,completion: { result, error in
-                if let result = result, error == nil{
-                    let usuario = result.user
+                if let _ = result, error == nil{
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                       
                 } else {
@@ -78,6 +68,10 @@ class LogueoViewController: UIViewController {
             self.present(self.mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "Querido CryptoUsuario para ingresar necesita colocar un usuario y contraseña", tituloBoton: "OK"), animated: true, completion: nil)
         }
     }
+    
+}
+
+extension LogueoViewController{
     
     func cryptoAnimacion(){
         inicioAnimated.center = view.center

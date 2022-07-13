@@ -19,7 +19,6 @@ class CryptoRemoteRepository: CryptoRepository{
             switch response.result{
             case .success(let cryptos):
                 completion(cryptos)
-
             case .failure(_):
                 completion(nil)
                 
