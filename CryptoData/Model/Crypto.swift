@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// MARK: Modelo de una crypto
 struct Crypto: Decodable {
     let id, symbol, name: String
     let image: String

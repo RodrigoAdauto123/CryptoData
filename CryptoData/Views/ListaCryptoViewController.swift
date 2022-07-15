@@ -22,6 +22,7 @@ class ListaCryptoViewController: UIViewController {
     var searchController: UISearchController!
     private var resultadoCryptoTableViewController: ResultadoCryptoTableViewController?
     var filteredCrypto = [Crypto]()
+    let spinner = UIActivityIndicatorView(style: .large)
     
     @IBAction func cerrarSesionBarButton(_ sender: Any) {
         do {
@@ -46,7 +47,7 @@ class ListaCryptoViewController: UIViewController {
         title = "Cryptomonedas"
         navigationItem.setHidesBackButton(true, animated: false)
         // Cracion del Indicator View
-        let spinner = UIActivityIndicatorView(style: .large)
+        
         spinner.startAnimating()
         self.listaCrypto.backgroundView = spinner
         
@@ -102,7 +103,7 @@ class ListaCryptoViewController: UIViewController {
             self.listaCrypto.reloadData()
         }
     }
-    
+    // MARK: Peticion de lista de criptomonedas
     override func viewDidAppear(_ animated: Bool) {
         
         let listaRepository: CryptoRepository
@@ -111,6 +112,7 @@ class ListaCryptoViewController: UIViewController {
             if let listaCrypto = listaCrypto{
                 self.cryptoList = listaCrypto
                 self.backupCryptoList = listaCrypto
+                self.spinner.stopAnimating()
                 self.listaCrypto.reloadData()
             }
         }

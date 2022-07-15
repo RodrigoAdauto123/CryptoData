@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+// MARK: Mesanje de alerta
 class MensajeAlert{
     
     func crearMensajeAlert(titulo: String, mensaje: String, tituloBoton: String) -> UIAlertController{

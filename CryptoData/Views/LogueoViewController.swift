@@ -26,7 +26,7 @@ class LogueoViewController: UIViewController {
         super.viewDidLoad()
         title = "CryptoData"
         
-        //MARK: Configurando nombre del backbutton
+        //MARK: Configuracion nombre del backbutton
         let backBarBtnItem = UIBarButtonItem()
             backBarBtnItem.title = "Ingreso"
             navigationItem.backBarButtonItem = backBarBtnItem

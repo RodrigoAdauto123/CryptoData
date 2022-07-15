@@ -181,9 +181,9 @@
 			children = (
 				898B56322874F0E2008564F4 /* MensajeAlert.swift */,
 				893998472867AB44001B1461 /* Crypto.swift */,
-				891436722870F81300E887CC /* NoticiaCrypto.swift */,
-				8914367F2871112300E887CC /* DetalleResponse.swift */,
 				898B5638287519E0008564F4 /* CryptoResponse.swift */,
+				8914367F2871112300E887CC /* DetalleResponse.swift */,
+				891436722870F81300E887CC /* NoticiaCrypto.swift */,
 				8988DC32287A729000FC092E /* Usuario.swift */,
 				8988DC34287A732900FC092E /* CryptoUsuario.swift */,
 				8988DC36287A738E00FC092E /* DetalleHistorialUsuario.swift */,

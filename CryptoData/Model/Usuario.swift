@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: Usuario en firestore
 struct Usuario: Codable{
     var correo: String
     var listaCrypto: [CryptoUsuario]?
