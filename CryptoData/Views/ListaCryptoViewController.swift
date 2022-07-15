@@ -45,7 +45,7 @@ class ListaCryptoViewController: UIViewController {
         super.viewDidLoad()
         title = "Cryptomonedas"
         navigationItem.setHidesBackButton(true, animated: false)
-        
+        // Cracion del Indicator View
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.startAnimating()
         self.listaCrypto.backgroundView = spinner
@@ -76,6 +76,7 @@ class ListaCryptoViewController: UIViewController {
         }
         
     }
+    // MARK: Redireccion al historial de compra y venta de cryptomonedas
     @IBAction func HistorialCryptoButton(_ sender: Any) {
         let getUsuario: GetUsuarioDBRepositoryProtocol
         if let historialCrypto = storyboard?.instantiateViewController(withIdentifier: "HistorialCryptoTableViewController") as? HistorialCryptoTableViewController{
@@ -115,7 +116,7 @@ class ListaCryptoViewController: UIViewController {
         }
     }
 }
-
+// MARK: Configuracion del TableView
 extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     
     
@@ -162,10 +163,10 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     }
    
 }
-
+// MARK: Filtros del UISearchController
 extension ListaCryptoViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate{
     
-    
+    // Actualizacion de resultados
     func updateSearchResults(for searchController: UISearchController) {
             
             filteredCrypto =  filterContentForSearchText(searchController.searchBar.text!)
@@ -176,6 +177,7 @@ extension ListaCryptoViewController: UISearchResultsUpdating, UISearchController
             }
         }
     
+    // Filtro
     func filterContentForSearchText(_ searchText: String) -> [Crypto] {
        
         filteredCrypto = (cryptoList?.filter({ (crypto: Crypto) -> Bool in
@@ -195,6 +197,7 @@ extension ListaCryptoViewController: UISearchResultsUpdating, UISearchController
     
     
 }
+// MARK: Filtro noticia
 extension ListaCryptoViewController{
     
     func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 import Lottie
 
 class RegistroViewController: UIViewController {
@@ -15,13 +14,11 @@ class RegistroViewController: UIViewController {
     @IBOutlet weak var repitaContrasenia: UITextField!
     @IBOutlet weak var contraseniaRegistro: UITextField!
     @IBOutlet weak var correoRegistro: UITextField!
-    private let saldoInicial : Double = 5000.0
     let alertaClass = MensajeAlert()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Registro de usuario"
         cryptoAnimacion()
-        
     }
     
     @IBAction func registroUsuarioAction(_ sender: Any) {
@@ -35,17 +32,20 @@ class RegistroViewController: UIViewController {
             
             registroUsuario.registroUsuario(correo: correo, contrasenia: contrasenia) { result, error in
                 if let _ = result, error == nil{
-                    if let _ = registroDb.registroUsuarioDb(correo: correo,listaCrypto: [],saldo: self.saldoInicial){
+                    if let _ = registroDb.registroUsuarioDb(correo: correo,listaCrypto: [],saldo: Constantes.saldo){
+                        // MARK: Error del servicio de firestore
                         self.present(self.alertaClass.crearMensajeAlert(titulo: "Error en registro de usuario", mensaje: "Actualmente tenemos problemas con nuestro servicio de logueo. Intente de nuevo", tituloBoton: "OK"), animated: true, completion: nil)
                     }else{
                         self.navigationController?.popViewController(animated: true)
                     }
                     
                 }else {
+                    // MARK: Error del servicio de Authetication
                     self.present(self.alertaClass.crearMensajeAlert(titulo: "Error en registro de usuario", mensaje: "Hubo un problema al registrar el usuario, revise que el correo no se encuentre en uso", tituloBoton: "OK"), animated: true, completion: nil)
                 }
             }            
         }else {
+            // MARK: Error en las validaciones
             self.present(self.alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: "Querido CryptoUsuario para registrarse necesita colocar un usuario y contraseña", tituloBoton: "OK"), animated: true, completion: nil)
         }
     }
@@ -54,6 +54,5 @@ class RegistroViewController: UIViewController {
         registroAnimated.contentMode = .scaleAspectFill
         registroAnimated.loopMode = .loop
         registroAnimated.play()
-        
     }
 }

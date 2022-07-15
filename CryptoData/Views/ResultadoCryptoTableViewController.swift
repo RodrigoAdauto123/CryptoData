@@ -19,6 +19,7 @@ class ResultadoCryptoTableViewController: UITableViewController {
         title = "Cryptomonedas"
         
     }
+    // MARK: Configuracion TableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard let cryptos = productosFiltrados else{return 0}

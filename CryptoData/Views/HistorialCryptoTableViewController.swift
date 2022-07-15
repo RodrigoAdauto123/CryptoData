@@ -17,6 +17,7 @@ class HistorialCryptoTableViewController: UITableViewController {
         
     }
 
+    // Configuracion TableView
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         guard let cantidadSecciones = usuario?.listaCrypto?.count else {return 0}
@@ -35,7 +36,9 @@ class HistorialCryptoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "historialCryptoCell", for: indexPath) as? HistorialCryptoTableViewCell else {
-            fatalError("Sin servicio")
+            let vacioCell = UITableViewCell()
+            print ("Error")
+            return vacioCell
         }
         if let historial = usuario?.listaCrypto![indexPath.section].historial![indexPath.row]{
             

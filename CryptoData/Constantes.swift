@@ -8,5 +8,6 @@
 import Foundation
 
 struct Constantes{
-    static var saldo: Double = 5000.0
+    static let saldo: Double = 5000.0
+    static let cantidadCrypto: Double = 1
 }

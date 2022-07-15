@@ -85,7 +85,7 @@ class DetalleViewController: UIViewController {
             }
         }
     }
-    
+    // MARK: Compra de cryptomoneda
     @IBAction func compraCryptoAction(_ sender: Any) {
         
         guard let saldoActual = self.saldo, let precioCrypto = Double(precio!) else {
@@ -104,9 +104,9 @@ class DetalleViewController: UIViewController {
                     var mismaMoneda = false
                     for var (index,crypto) in listaCrypto.enumerated(){
                         if crypto.nombre == nombreCrypto.text{
-                            let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto,tipo: "Compra")
+                            let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: Constantes.cantidadCrypto, precio: precioCrypto,tipo: "Compra")
                             crypto.historial?.append(detalleHistorial!)
-                            crypto.cantidadTotalCrypto += 1
+                            crypto.cantidadTotalCrypto += Constantes.cantidadCrypto
                             listaCrypto[index] = crypto
                             mismaMoneda = true
                             break
@@ -118,41 +118,47 @@ class DetalleViewController: UIViewController {
                             self.listaCrypto = listaCrypto
                             break
                         case false:
-                            crearTransaccion(cantidad: 1, precio: precioCrypto, tipo: "Compra")
+                        crearTransaccion(cantidad: Constantes.cantidadCrypto, precio: precioCrypto, tipo: "Compra")
                             break
                     }
                 }else {
-                    crearTransaccion(cantidad: 1, precio: precioCrypto, tipo: "Compra")
+                    crearTransaccion(cantidad: Constantes.cantidadCrypto, precio: precioCrypto, tipo: "Compra")
                 }
             
             actualizarUsuarioDb = RegistroDbRepository()
-            actualizarUsuarioDb.registroUsuarioDb(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
+            let error = actualizarUsuarioDb.registroUsuarioDb(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
+            if error != nil{
+                self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "Tenemos problemas con nuestro servicio de venta. Intente de nuevo", tituloBoton: "OK"), animated: true, completion: nil)
+            }
             self.viewWillAppear(true)
                 break
         }
     }
-    
+    // MARK: Venta de cryptomoneda
     @IBAction func ventaCryptoAction(_ sender: Any) {
         let actualizarUsuarioDb: RegistroDbRepositoryProtocol
         
         guard var usuarioCrypto = self.listaCrypto!.enumerated().first(where: {$0.element.nombre == self.nombreCrypto.text}) else {
             self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "No tiene esta cryptomoneda", tituloBoton: "OK"), animated: true, completion: nil)
             return}
-        let cantidadTotalCrypto = usuarioCrypto.element.cantidadTotalCrypto - 1
+        let cantidadTotalCrypto = usuarioCrypto.element.cantidadTotalCrypto - Constantes.cantidadCrypto
         guard let _ =  usuarioCrypto.element.historial, let precioCrypto = Double(precio!), let saldo = self.saldo, cantidadTotalCrypto >= 0 else{
             
             self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "No tiene esta cryptomoneda", tituloBoton: "OK"), animated: true, completion: nil)
             return
         }
         
-        let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: 1, precio: precioCrypto,tipo: "Venta")
+        let detalleHistorial: DetalleHistorialUsuario? = DetalleHistorialUsuario(cantidad: Constantes.cantidadCrypto, precio: precioCrypto,tipo: "Venta")
         usuarioCrypto.element.historial?.append(detalleHistorial!)
         usuarioCrypto.element.cantidadTotalCrypto = cantidadTotalCrypto
         self.listaCrypto![usuarioCrypto.offset] = usuarioCrypto.element
         let saldoRestante  = saldo + precioCrypto
         
         actualizarUsuarioDb = RegistroDbRepository()
-        actualizarUsuarioDb.registroUsuarioDb(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
+        let error = actualizarUsuarioDb.registroUsuarioDb(correo: correo, listaCrypto: listaCrypto, saldo: saldoRestante)
+        if error != nil{
+            self.present(mensajeClass.crearMensajeAlert(titulo: "UPS", mensaje: "Tenemos problemas con nuestro servicio de venta. Intente de nuevo", tituloBoton: "OK"), animated: true, completion: nil)
+        }
         self.viewWillAppear(true)
         
     }
