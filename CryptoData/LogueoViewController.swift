@@ -62,8 +62,13 @@ class LogueoViewController: UIViewController {
             logueoRepository.logueoUsuario(correo: email, contrasenia: contrasenia,completion: { result, error in
                 if let result = result, error == nil{
                     let usuario = result.user
-                    self.performSegue(withIdentifier: "loginSegue", sender: usuario)
-                      
+                    //                    self.performSegue(withIdentifier: "loginSegue", sender: usuario)
+                    
+                    let tableView = (self.storyboard?.instantiateViewController(identifier: "ListaCryptoViewController", creator: { coder in
+                        ListaCryptoViewController(coder: coder ,listaRepository: CryptoRemoteRepository())
+                    }))!
+                    self.navigationController?.pushViewController(tableView, animated: false)
+                    
                 } else {
                     self.present(self.mensajeClass.crearMensajeAlert(titulo: "Error", mensaje: "No se puede iniciar sesión", tituloBoton: "OK"), animated: true, completion: nil)
                 }

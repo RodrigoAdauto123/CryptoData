@@ -10,74 +10,93 @@ import FirebaseAuth
 import Kingfisher
 
 class ListaCryptoViewController: UIViewController {
-
-    
-    
+           
     @IBOutlet weak var listaCrypto: UITableView!
+    
     var cryptoList: [Crypto]?
     var backupCryptoList: [Crypto] = []
-    
     var email: String?
+    var searchController: UISearchController!
+    var filteredCrypto = [Crypto]()
+    private var resultadoCryptoTableViewController: ResultadoCryptoTableViewController?
+    let listaRepository: CryptoRepository
     let userDefaults = UserDefaults.standard
     let alertaClass = MensajeAlert()
     
-    var searchController: UISearchController!
-    private var resultadoCryptoTableViewController: ResultadoCryptoTableViewController?
-    var filteredCrypto = [Crypto]()
+    enum Constant {
+        static let buttonMessageLogOut = "Ocurrio un error"
+        static let buttonMessageTitleLogOut = "Intentare de nuevo"
+        static let alertMessageNew = "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones"
+    }
+    
+    init?(coder: NSCoder, listaRepository: CryptoRepository) {
+        self.listaRepository = listaRepository
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     @IBAction func cerrarSesionBarButton(_ sender: Any) {
         do {
-           try Auth.auth().signOut()
-            
-            //Borrando los datos de sesion
+            try Auth.auth().signOut()
+            // Delete session data
             userDefaults.removeObject(forKey: "email")
             userDefaults.synchronize()
-            
             if let inicio = storyboard?.instantiateViewController(withIdentifier: "LogueoViewController"){
-                
                 navigationController?.pushViewController(inicio, animated: false)
             }
             
         } catch {
-            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: "Ocurrio un error", tituloBoton: "Intentare de nuevo"), animated: true)
+            present(alertaClass.crearMensajeAlert(titulo: "UPS!", mensaje: Constant.buttonMessageLogOut, tituloBoton: Constant.buttonMessageTitleLogOut), animated: true)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Cryptomonedas"
-        
-        
-        navigationItem.setHidesBackButton(true, animated: false)
-        
+        setUpHideBackNavigationItem()
         // Configurarndo el UISearchController
-        resultadoCryptoTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultadoCryptoTableViewController") as? ResultadoCryptoTableViewController
-        
-        resultadoCryptoTableViewController?.tableView.delegate = self
-        searchController = UISearchController(searchResultsController: resultadoCryptoTableViewController)
-        
-        searchController.delegate = self
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.autocapitalizationType = .none
-        searchController.searchBar.delegate = self
-        
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        definesPresentationContext = true
-        
+        setSearchController()
+        setUpNavigationItem()
         listaCrypto.dataSource = self
         listaCrypto.delegate = self
+        saveDataUserDefaults()
+        
+    }
+    
+    private func saveDataUserDefaults(){
         if let _ = userDefaults.string(forKey: "email"){
         } else {
             //Guardamos el correo
             userDefaults.set(email, forKey: "email")
             userDefaults.synchronize()
         }
-        
+    }
+    
+    private func setUpHideBackNavigationItem(){
+        navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    private func setUpNavigationItem(){
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
+    private func setSearchController () {
+        resultadoCryptoTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultadoCryptoTableViewController") as? ResultadoCryptoTableViewController
+        resultadoCryptoTableViewController?.tableView.delegate = self
+        searchController = UISearchController(searchResultsController: resultadoCryptoTableViewController)
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Cada vez que regresa hacia atras, se actualiza la lista de cryptomonedas
+        // Data reload
         if animated == true{
             self.listaCrypto.reloadData()
         }
@@ -86,10 +105,16 @@ class ListaCryptoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let listaRepository: CryptoRepository
-        listaRepository = CryptoRemoteRepository()
+        //        listaRepository = CryptoRemoteRepository()
+        //        listaRepository.getCrypto { listaCrypto in
+        //            if let listaCrypto = listaCrypto{
+        //                self.cryptoList = listaCrypto
+        //                self.backupCryptoList = listaCrypto
+        //                self.listaCrypto.reloadData()
+        //            }
+        //        }
         listaRepository.getCrypto { listaCrypto in
-            if let listaCrypto = listaCrypto{
+            if let listaCrypto = listaCrypto {
                 self.cryptoList = listaCrypto
                 self.backupCryptoList = listaCrypto
                 self.listaCrypto.reloadData()
@@ -100,9 +125,7 @@ class ListaCryptoViewController: UIViewController {
 
 extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard let cryptos = cryptoList else{
             return 0
         }
@@ -110,7 +133,6 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListaTableViewCell else {
             fatalError("Sin servicio")
         }
@@ -129,15 +151,11 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetalleViewController") as? DetalleViewController
-        
         guard let cryptoNoticia: NoticiaCrypto =  filtroNoticia(cryptoList![indexPath.row].name) else {
-            
-            self.present(alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones", tituloBoton: "OK"), animated: true, completion: nil)
+            self.present(alertaClass.crearMensajeAlert(titulo: "UPS", mensaje: Constant.alertMessageNew, tituloBoton: "OK"), animated: true, completion: nil)
             return
         }
-        
         vc?.simbolo =  cryptoList![indexPath.row].symbol
         vc?.image = cryptoList![indexPath.row].image
         vc?.nombre =  cryptoList![indexPath.row].name
@@ -148,9 +166,8 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
         vc?.fechaNoticia = cryptoNoticia.fechaNoticia
         self.navigationController?.pushViewController(vc!, animated: true)
     }
-   
+    
     func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{
-        
         let detalle: DetalleRepository?
         detalle = DetalleLocalRepository()
         guard let variable = detalle?.getDetalle() else { return nil}
@@ -173,24 +190,18 @@ extension ListaCryptoViewController:UISearchBarDelegate{
 }
 
 extension ListaCryptoViewController: UISearchResultsUpdating, UISearchControllerDelegate{
-    
-    
-        func updateSearchResults(for searchController: UISearchController) {
-            
-            filteredCrypto =  filterContentForSearchText(searchController.searchBar.text!)
-            
-            if let resultsController = searchController.searchResultsController as? ResultadoCryptoTableViewController {
-                resultsController.productosFiltrados = filteredCrypto
-                resultsController.tableView.reloadData()
-            }
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredCrypto =  filterContentForSearchText(searchController.searchBar.text!)
+        if let resultsController = searchController.searchResultsController as? ResultadoCryptoTableViewController {
+            resultsController.productosFiltrados = filteredCrypto
+            resultsController.tableView.reloadData()
         }
+    }
     
     func filterContentForSearchText(_ searchText: String) -> [Crypto] {
-       
         filteredCrypto = (cryptoList?.filter({ (crypto: Crypto) -> Bool in
             return crypto.name.lowercased().contains(searchText.lowercased())
         }))!
-      
         return filteredCrypto
     }
 }
