@@ -22,6 +22,8 @@ class ListaCryptoViewController: UIViewController {
     let listaRepository: CryptoRepository
     let userDefaults = UserDefaults.standard
     let alertaClass = MensajeAlert()
+    let detalle: DetalleRepository?
+    
     
     enum Constant {
         static let buttonMessageLogOut = "Ocurrio un error"
@@ -29,8 +31,9 @@ class ListaCryptoViewController: UIViewController {
         static let alertMessageNew = "Por el momento no hay data sobre esta crypto, espera las siguientes actualizaciones"
     }
     
-    init?(coder: NSCoder, listaRepository: CryptoRepository) {
+    init?(coder: NSCoder, listaRepository: CryptoRepository, detalleRepository: DetalleRepository) {
         self.listaRepository = listaRepository
+        self.detalle =  detalleRepository
         super.init(coder: coder)
     }
     
@@ -168,8 +171,16 @@ extension ListaCryptoViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func filtroNoticia(_ nombre: String) -> NoticiaCrypto?{
-        let detalle: DetalleRepository?
-        detalle = DetalleLocalRepository()
+        
+        
+//        detalle = DetalleLocalRepository()
+//        guard let variable = detalle?.getDetalle() else { return nil}
+//        for crypto in variable.crypto{
+//            if (crypto.nombre.lowercased() == nombre.lowercased()){
+//                return crypto
+//            }
+//        }
+        
         guard let variable = detalle?.getDetalle() else { return nil}
         for crypto in variable.crypto{
             if (crypto.nombre.lowercased() == nombre.lowercased()){

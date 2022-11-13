@@ -10,5 +10,4 @@ import FirebaseAuth
 
 protocol LogueoRepositoryProtocol{
     func logueoUsuario(correo: String,contrasenia: String ,completion: @escaping (AuthDataResult?,Error?) -> Void)
-    
 }

@@ -10,13 +10,8 @@ import FirebaseAuth
 
 class RegistroAuthRepository: RegistroRepositoryProtocol{
     func registroUsuario(correo: String, contrasenia: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
-        
         Auth.auth().createUser(withEmail: correo, password: contrasenia) { (result,error) in
             completion(result,error)
         }
-        
     }
-    
-    
-    
 }

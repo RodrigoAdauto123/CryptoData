@@ -65,7 +65,7 @@ class LogueoViewController: UIViewController {
                     //                    self.performSegue(withIdentifier: "loginSegue", sender: usuario)
                     
                     let tableView = (self.storyboard?.instantiateViewController(identifier: "ListaCryptoViewController", creator: { coder in
-                        ListaCryptoViewController(coder: coder ,listaRepository: CryptoRemoteRepository())
+                        ListaCryptoViewController(coder: coder ,listaRepository: CryptoRemoteRepository(), detalleRepository: DetalleLocalRepository())
                     }))!
                     self.navigationController?.pushViewController(tableView, animated: false)
                     

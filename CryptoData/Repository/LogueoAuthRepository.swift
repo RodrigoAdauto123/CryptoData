@@ -10,7 +10,6 @@ import FirebaseAuth
 
 class LogueoAuthRepository: LogueoRepositoryProtocol{
     func logueoUsuario(correo: String, contrasenia: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
-        
         Auth.auth().signIn(withEmail: correo, password: contrasenia) { result, error in
             completion(result,error)
         }

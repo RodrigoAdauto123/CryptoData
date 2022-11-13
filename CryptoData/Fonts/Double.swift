@@ -9,7 +9,6 @@ import Foundation
 
 extension Double{
     
-    
     private var formatoDoublePrecio: NumberFormatter{
         let formatter = NumberFormatter()
         formatter.usesGroupingSeparator = true
@@ -18,7 +17,6 @@ extension Double{
         formatter.maximumFractionDigits = 5 
         return formatter
     }
-    
     
     func conversionPrecio() -> String{
         let number = NSNumber(value: self)

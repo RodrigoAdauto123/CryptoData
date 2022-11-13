@@ -25,10 +25,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rnJ-0G-GFG">
-                                <rect key="frame" x="16" y="375" width="382" height="257"/>
+                                <rect key="frame" x="16" y="375" width="382" height="290"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dirección de correo electrónico" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EUm-Sw-mQ5" userLabel="Direccion de correo electronico">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <edgeInsets key="layoutMargins" top="-4" left="7" bottom="1" right="8"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -37,12 +37,12 @@
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-hZ-JV5">
-                                        <rect key="frame" x="0.0" y="44.5" width="382" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="382" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contraseña" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCJ-lK-aMG" userLabel="Direccion de correo electronico">
-                                        <rect key="frame" x="0.0" y="89" width="382" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="100" width="382" height="40"/>
                                         <edgeInsets key="layoutMargins" top="-4" left="7" bottom="1" right="8"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -50,12 +50,12 @@
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O26-nE-kDn">
-                                        <rect key="frame" x="0.0" y="133.5" width="382" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="150" width="382" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLQ-eP-3I9">
-                                        <rect key="frame" x="0.0" y="178" width="382" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="200" width="382" height="40"/>
                                         <color key="backgroundColor" red="0.42745098469999998" green="0.5176470876" blue="0.73725497719999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -65,16 +65,16 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jvY-vx-HnT">
-                                        <rect key="frame" x="0.0" y="222.5" width="382" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="250" width="382" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Eres nuevo en CryptoData?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDh-Lt-nxr">
-                                                <rect key="frame" x="0.0" y="0.0" width="191.5" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="191.5" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dB-EL-Tj8">
-                                                <rect key="frame" x="190.5" y="0.0" width="191.5" height="34.5"/>
+                                                <rect key="frame" x="190.5" y="0.0" width="191.5" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="f3M-5E-uIW"/>
                                                 </constraints>
