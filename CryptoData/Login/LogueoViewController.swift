@@ -31,8 +31,8 @@ class LogueoViewController: UIViewController {
         }else {
             cryptoAnimacion()
         }
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         correoLogin.text = ""
         contraseniaLogin.text = ""
@@ -49,6 +49,8 @@ class LogueoViewController: UIViewController {
             if let correo = correoLogin.text {
                 let viewController = segue.destination as? ListaCryptoViewController
                 viewController?.email = correo
+                viewController?.listaRepository = CryptoRemoteRepository()
+                viewController?.detalle = DetalleLocalRepository()
             }
         }
     }
@@ -63,9 +65,8 @@ class LogueoViewController: UIViewController {
                 if let result = result, error == nil{
                     let usuario = result.user
                     //                    self.performSegue(withIdentifier: "loginSegue", sender: usuario)
-                    
                     let tableView = (self.storyboard?.instantiateViewController(identifier: "ListaCryptoViewController", creator: { coder in
-                        ListaCryptoViewController(coder: coder ,listaRepository: CryptoRemoteRepository(), detalleRepository: DetalleLocalRepository())
+                        ListaCryptoViewController(coder:coder, listaRepository: CryptoRemoteRepository(), detalleRepository: DetalleLocalRepository())
                     }))!
                     self.navigationController?.pushViewController(tableView, animated: false)
                     
@@ -76,7 +77,7 @@ class LogueoViewController: UIViewController {
         }
     }
     
-    func cryptoAnimacion(){
+   private func cryptoAnimacion(){
         inicioAnimated.center = view.center
         inicioAnimated.contentMode = .center
         inicioAnimated.loopMode = .loop

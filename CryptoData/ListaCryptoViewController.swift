@@ -19,10 +19,10 @@ class ListaCryptoViewController: UIViewController {
     var searchController: UISearchController!
     var filteredCrypto = [Crypto]()
     private var resultadoCryptoTableViewController: ResultadoCryptoTableViewController?
-    let listaRepository: CryptoRepository
+    var listaRepository: CryptoRepository? = nil
     let userDefaults = UserDefaults.standard
     let alertaClass = MensajeAlert()
-    let detalle: DetalleRepository?
+    var detalle: DetalleRepository? = nil
     
     
     enum Constant {
@@ -34,11 +34,13 @@ class ListaCryptoViewController: UIViewController {
     init?(coder: NSCoder, listaRepository: CryptoRepository, detalleRepository: DetalleRepository) {
         self.listaRepository = listaRepository
         self.detalle =  detalleRepository
+//        super.init(coder: coder)
         super.init(coder: coder)
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+//        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     @IBAction func cerrarSesionBarButton(_ sender: Any) {
@@ -116,7 +118,7 @@ class ListaCryptoViewController: UIViewController {
         //                self.listaCrypto.reloadData()
         //            }
         //        }
-        listaRepository.getCrypto { listaCrypto in
+        listaRepository?.getCrypto { listaCrypto in
             if let listaCrypto = listaCrypto {
                 self.cryptoList = listaCrypto
                 self.backupCryptoList = listaCrypto

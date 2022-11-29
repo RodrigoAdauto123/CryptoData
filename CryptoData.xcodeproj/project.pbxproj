@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61BCAA852920CBC100CEE2F5 /* RegistroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCAA842920CBC100CEE2F5 /* RegistroViewModel.swift */; };
+		61BCAA872920CBE300CEE2F5 /* LogueoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCAA862920CBE300CEE2F5 /* LogueoViewModel.swift */; };
+		61BCAA892920CC2600CEE2F5 /* DetalleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCAA882920CC2600CEE2F5 /* DetalleViewModel.swift */; };
 		890CF2E42877B5E100040C79 /* securecrypto.json in Resources */ = {isa = PBXBuildFile; fileRef = 890CF2E32877B5E100040C79 /* securecrypto.json */; };
 		890CF2E82877D88B00040C79 /* register.json in Resources */ = {isa = PBXBuildFile; fileRef = 890CF2E72877D88B00040C79 /* register.json */; };
 		89107E9D28693F2A00C618FE /* LogueoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89107E9C28693F2A00C618FE /* LogueoViewController.swift */; };
@@ -26,7 +29,6 @@
 		895A73BA28692122006C79A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 895A73B928692122006C79A2 /* GoogleService-Info.plist */; };
 		8962688E285BE627003DDAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962688D285BE627003DDAA9 /* AppDelegate.swift */; };
 		89626890285BE627003DDAA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962688F285BE627003DDAA9 /* SceneDelegate.swift */; };
-		89626892285BE627003DDAA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89626891285BE627003DDAA9 /* ViewController.swift */; };
 		89626895285BE627003DDAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89626893285BE627003DDAA9 /* Main.storyboard */; };
 		89626897285BE628003DDAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89626896285BE628003DDAA9 /* Assets.xcassets */; };
 		8962689A285BE628003DDAA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89626898285BE628003DDAA9 /* LaunchScreen.storyboard */; };
@@ -45,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		3B63C34AC7166A9039276A3F /* Pods-CryptoData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoData.debug.xcconfig"; path = "Target Support Files/Pods-CryptoData/Pods-CryptoData.debug.xcconfig"; sourceTree = "<group>"; };
+		61BCAA842920CBC100CEE2F5 /* RegistroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroViewModel.swift; sourceTree = "<group>"; };
+		61BCAA862920CBE300CEE2F5 /* LogueoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogueoViewModel.swift; sourceTree = "<group>"; };
+		61BCAA882920CC2600CEE2F5 /* DetalleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewModel.swift; sourceTree = "<group>"; };
 		890CF2E32877B5E100040C79 /* securecrypto.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = securecrypto.json; sourceTree = "<group>"; };
 		890CF2E72877D88B00040C79 /* register.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = register.json; sourceTree = "<group>"; };
 		89107E9C28693F2A00C618FE /* LogueoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogueoViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +70,6 @@
 		8962688A285BE627003DDAA9 /* CryptoData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8962688D285BE627003DDAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8962688F285BE627003DDAA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		89626891285BE627003DDAA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		89626894285BE627003DDAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89626896285BE628003DDAA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89626899285BE628003DDAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,6 +100,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61BCAA802920CB6700CEE2F5 /* DetailReponse */ = {
+			isa = PBXGroup;
+			children = (
+				89DF291E287146EE00E06CFA /* DetalleViewController.swift */,
+				61BCAA882920CC2600CEE2F5 /* DetalleViewModel.swift */,
+			);
+			path = DetailReponse;
+			sourceTree = "<group>";
+		};
+		61BCAA812920CB7D00CEE2F5 /* CryptoFilterResponse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CryptoFilterResponse;
+			sourceTree = "<group>";
+		};
+		61BCAA822920CB8E00CEE2F5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				89107E9C28693F2A00C618FE /* LogueoViewController.swift */,
+				61BCAA862920CBE300CEE2F5 /* LogueoViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		61BCAA832920CB9800CEE2F5 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				89107E9E286946FA00C618FE /* RegistroViewController.swift */,
+				61BCAA842920CBC100CEE2F5 /* RegistroViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		61BCAA8A2920CD1000CEE2F5 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
 		778AA55C2531D702BC065220 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,15 +187,17 @@
 		8962688C285BE627003DDAA9 /* CryptoData */ = {
 			isa = PBXGroup;
 			children = (
+				61BCAA8A2920CD1000CEE2F5 /* Crypto */,
+				61BCAA832920CB9800CEE2F5 /* Register */,
+				61BCAA822920CB8E00CEE2F5 /* Login */,
+				61BCAA812920CB7D00CEE2F5 /* CryptoFilterResponse */,
+				61BCAA802920CB6700CEE2F5 /* DetailReponse */,
 				898B56352874FA9A008564F4 /* Fonts */,
 				898B56312873B242008564F4 /* Data */,
 				898B56302873B1FA008564F4 /* Model */,
 				8914367A287102ED00E887CC /* Repository */,
 				8962688D285BE627003DDAA9 /* AppDelegate.swift */,
 				8962688F285BE627003DDAA9 /* SceneDelegate.swift */,
-				89626891285BE627003DDAA9 /* ViewController.swift */,
-				89107E9C28693F2A00C618FE /* LogueoViewController.swift */,
-				89107E9E286946FA00C618FE /* RegistroViewController.swift */,
 				89626893285BE627003DDAA9 /* Main.storyboard */,
 				89626898285BE628003DDAA9 /* LaunchScreen.storyboard */,
 				89E46D97286622AA007199FD /* ListaCryptoViewController.swift */,
@@ -158,7 +205,6 @@
 				89626896285BE628003DDAA9 /* Assets.xcassets */,
 				8962689B285BE628003DDAA9 /* Info.plist */,
 				895A73B928692122006C79A2 /* GoogleService-Info.plist */,
-				89DF291E287146EE00E06CFA /* DetalleViewController.swift */,
 				898B56322874F0E2008564F4 /* MensajeAlert.swift */,
 				898B56402875E2C0008564F4 /* ResultadoListaTableViewCell.swift */,
 				898B564228763C14008564F4 /* ResultadoCryptoTableViewController.swift */,
@@ -171,9 +217,9 @@
 		898B56302873B1FA008564F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8914367F2871112300E887CC /* DetalleResponse.swift */,
 				893998472867AB44001B1461 /* Crypto.swift */,
 				891436722870F81300E887CC /* NoticiaCrypto.swift */,
-				8914367F2871112300E887CC /* DetalleResponse.swift */,
 				898B5638287519E0008564F4 /* CryptoResponse.swift */,
 			);
 			path = Model;
@@ -329,8 +375,10 @@
 				89493C952877F2F200DEEE8F /* LogueoAuthRepository.swift in Sources */,
 				8939984A2867DF0F001B1461 /* ListaTableViewCell.swift in Sources */,
 				89493C992877F51700DEEE8F /* LogueoRepositoryProtocol.swift in Sources */,
+				61BCAA872920CBE300CEE2F5 /* LogueoViewModel.swift in Sources */,
 				891E17DA2872347100C9D85A /* CryptoRepository.swift in Sources */,
 				893998482867AB44001B1461 /* Crypto.swift in Sources */,
+				61BCAA892920CC2600CEE2F5 /* DetalleViewModel.swift in Sources */,
 				898B5639287519E0008564F4 /* CryptoResponse.swift in Sources */,
 				89493C9B2877F98500DEEE8F /* RegistroAuthRepository.swift in Sources */,
 				898B56412875E2C0008564F4 /* ResultadoListaTableViewCell.swift in Sources */,
@@ -341,8 +389,8 @@
 				89107E9F286946FA00C618FE /* RegistroViewController.swift in Sources */,
 				89DF291F287146EE00E06CFA /* DetalleViewController.swift in Sources */,
 				89107E9D28693F2A00C618FE /* LogueoViewController.swift in Sources */,
+				61BCAA852920CBC100CEE2F5 /* RegistroViewModel.swift in Sources */,
 				8914367C2871033700E887CC /* DetalleRepository.swift in Sources */,
-				89626892285BE627003DDAA9 /* ViewController.swift in Sources */,
 				8962688E285BE627003DDAA9 /* AppDelegate.swift in Sources */,
 				89626890285BE627003DDAA9 /* SceneDelegate.swift in Sources */,
 				898B5637287518FF008564F4 /* CryptoLocalRepository.swift in Sources */,
